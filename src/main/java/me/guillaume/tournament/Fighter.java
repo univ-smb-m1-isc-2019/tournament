@@ -1,13 +1,16 @@
 package me.guillaume.tournament;
 
+import java.util.ArrayList;
+
 public abstract class Fighter {
 
     private int hitPoints;
-    private Weapon weapon;
+    protected Weapon weapon;
+    protected ArrayList<Defense> defenseEquipment;
 
-    public Fighter(int hitPoints, Weapon weapon){
+    public Fighter(int hitPoints){
         this.hitPoints = hitPoints;
-        this.weapon = weapon;
+        this.defenseEquipment = new ArrayList<>();
     }
 
     public void engage(Fighter otherFighter){
@@ -20,6 +23,7 @@ public abstract class Fighter {
         }
     }
 
+
     private boolean isDead(){
         return hitPoints <= 0;
     }
@@ -27,14 +31,24 @@ public abstract class Fighter {
     private void attack(Fighter otherFighter){
         int attackerAttackPower = this.getAttackPower();
 
-        otherFighter.takeAHit(attackerAttackPower);
+        otherFighter.takeAHit(attackerAttackPower, this.weapon);
     }
 
     private int getAttackPower(){
-        return weapon.getPower();
+        int attackPower = weapon.getPower();
+
+        for(Defense equipment: defenseEquipment){
+            attackPower = equipment.damageModifier(attackPower);
+        }
+
+        return attackPower;
     }
 
-    private void takeAHit(int damageTaken){
+    private void takeAHit(int damageTaken, Weapon attackerWeapon){
+        for(Defense equipment: defenseEquipment) {
+            damageTaken = equipment.defenseModifier(damageTaken, attackerWeapon);
+        }
+
         hitPoints -= damageTaken;
 
         if(hitPoints < 0) hitPoints = 0;
