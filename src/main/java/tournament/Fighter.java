@@ -4,8 +4,8 @@ public class Fighter {
 
     public int hp;
     public int dmg;
-    public Weapon mainhand;
-    public Weapon offhand;
+    public String mainhand;
+    public String offhand;
 
     public Fighter() {
     }
@@ -14,16 +14,45 @@ public class Fighter {
     /** Tant qu'un des deux combattants n'est pas mort, ils s'attaquent à tour de rôle **/
     public void engage(Fighter fighter) {
 
+        boolean blockedB = false;
+        int shieldDestroyB = 0;
+        boolean blockedA = false;
+        int shieldDestroyA = 0;
+
         while( (fighter.getHp() > 0) && (this.getHp() > 0))
         {
-            // A engage B
-            fighter.blow(this.dmg);
-            if(fighter.getHp() > 0) // B engage A
+            /** A engage B **/
+            if(fighter.gotShield())
             {
-                this.blow(fighter.dmg);
+                if(!blockedB && shieldDestroyB < 3){
+                    blockedB = true;
+                    if(this.gotAxe()) shieldDestroyB++;
+                }
+                else{
+                    fighter.blow(this.dmg);
+                    blockedB = false;
+                }
+            } else
+                fighter.blow(this.dmg);
+
+            /** B engage A **/
+            if(fighter.getHp() > 0) {
+
+                if(this.gotShield())
+                {
+                    if(!blockedA && shieldDestroyA < 3 )
+                    {
+                        blockedA = true;
+                        if(fighter.gotAxe()) shieldDestroyA++;
+                    }
+                    else{
+                        this.blow(fighter.dmg);
+                        blockedA = false;
+                    }
+                }
+                else this.blow(fighter.dmg);
             }
         }
-
     }
 
     /** Renvoi le nombre d'HP du combattant **/
@@ -41,15 +70,40 @@ public class Fighter {
 
     public Fighter equip(String buckler) {
         if(mainHandIsEmpty())
-            this.mainhand = new Weapon(buckler);
-        else
-            this.offhand = new Weapon(buckler);
+            this.mainhand = buckler;
+        if(offHandIsEmpty())
+            this.offhand = buckler;
         return this;
     }
+
 
     public boolean mainHandIsEmpty()
     {
         return this.mainhand == null;
+    }
+    public boolean offHandIsEmpty()
+    {
+        return this.offhand == null;
+    }
+
+    public boolean gotShield(){
+        if(!mainHandIsEmpty())
+            if(this.mainhand == "buckler")
+                return true;
+        if(!offHandIsEmpty())
+            if (this.offhand == "buckler" )
+                return true;
+        return false;
+    }
+
+    public boolean gotAxe(){
+        if(!mainHandIsEmpty())
+            if(this.mainhand == "Axe")
+                return true;
+        if(!offHandIsEmpty())
+            if (this.offhand == "Axe" )
+                return true;
+        return false;
     }
 
     /** Getters **/
@@ -59,10 +113,10 @@ public class Fighter {
     public int getHp() {
         return hp;
     }
-    public Weapon getMainhand() {
+    public String getMainhand() {
         return mainhand;
     }
-    public Weapon getOffhand() {
+    public String getOffhand() {
         return offhand;
     }
 
