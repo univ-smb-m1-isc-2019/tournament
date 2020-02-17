@@ -2,18 +2,16 @@ package pack;
 
 public abstract class Warrior{
     private int hp;
-    private int damage;
     private Bouclier bouclier;
+    private Weapon weapon;
 
-    public Warrior(int hp, int damage){
+    public Warrior(int hp,Weapon weapon){
         this.hp=hp;
-        this.damage=damage;
         this.bouclier = null;
     }
 
-    public Warrior(int hp, int damage,  String stuff) {
+    public Warrior(int hp,Weapon weapon, String stuff) {
         this.hp = hp;
-        this.damage=damage;
         this.bouclier = null;
         equipGear(stuff);
 
@@ -30,7 +28,7 @@ public abstract class Warrior{
     }
 
     public int getDamage (){
-        return this.damage;
+        return this.weapon.getDamage();
     }
 
     //Retourne le nombre de pv restants
@@ -51,7 +49,7 @@ public abstract class Warrior{
         if ( bouclier.estCasse() || bouclier.vientDeParer() ){
             decreaseHealthPoints(damage);
         }
-    
+
     }
 
     private void decreaseHealthPoints(int damage){
