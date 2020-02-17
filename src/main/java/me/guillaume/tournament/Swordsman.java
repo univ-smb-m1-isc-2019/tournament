@@ -11,7 +11,7 @@ public class Swordsman extends Fighter{
 
     public Swordsman(String type){
         super(HIT_POINTS);
-
+        equip("one_hand_sword");
     }
 
     public Swordsman equip(String equipmentName){
