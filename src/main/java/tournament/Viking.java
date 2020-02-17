@@ -1,12 +1,14 @@
 package tournament;
 
 public class Viking extends Fighter {
-    private static int DAMAGE = 6;
+
     private static int LIFE = 120;
+    private static String DEFAULTWEAPON = "axe";
 
     public Viking()
     {
-        super(LIFE,DAMAGE);
+        super(LIFE,DEFAULTWEAPON);
+        setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
     public Viking(String s)
@@ -18,9 +20,8 @@ public class Viking extends Fighter {
         return super.hitPoints();
     }
 
-    @Override
-    public Viking equip(String axe) {
-        return null;
+    public Viking equip(String equipement) {
+        return (Viking) super.equip(equipement);
     }
 
 

@@ -2,12 +2,12 @@ package tournament;
 
 public class Highlander extends Fighter{
     private static int LIFE = 150;
-    private static int DAMAGE = 12;
+    private static String DEFAULTWEAPON = "great sword";
 
     public Highlander()
     {
-        super(LIFE,DAMAGE);
-
+        super(LIFE,DEFAULTWEAPON);
+        setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
     public Highlander(String s)
@@ -15,10 +15,8 @@ public class Highlander extends Fighter{
         super(s);
     }
 
-
-    @Override
-    public Highlander equip(String axe) {
-        return null;
+    public Highlander equip(String equipement) {
+        return (Highlander) super.equip(equipement);
     }
 
 
