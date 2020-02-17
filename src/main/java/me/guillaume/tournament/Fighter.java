@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public abstract class Fighter {
 
     private int hitPoints;
+    private int fatigue;
     protected Weapon weapon;
     protected ArrayList<Defense> defenseEquipment;
 
     public Fighter(int hitPoints){
         this.hitPoints = hitPoints;
+        this.fatigue = 0;
         this.defenseEquipment = new ArrayList<>();
     }
 
@@ -29,9 +31,11 @@ public abstract class Fighter {
     }
 
     private void attack(Fighter otherFighter){
-        int attackerAttackPower = this.getAttackPower();
+        if(this.canAttack()) {
+            int attackerAttackPower = this.getAttackPower();
 
-        otherFighter.takeAHit(attackerAttackPower, this.weapon);
+            otherFighter.takeAHit(attackerAttackPower, this.weapon);
+        }
     }
 
     private int getAttackPower(){
@@ -49,9 +53,26 @@ public abstract class Fighter {
             damageTaken = equipment.defenseModifier(damageTaken, attackerWeapon);
         }
 
+        if(damageTaken < 0) damageTaken = 0;
+
         hitPoints -= damageTaken;
 
         if(hitPoints < 0) hitPoints = 0;
+    }
+
+    private boolean canAttack(){
+        int attackSpeed = weapon.getAttackSpeed();
+
+        // If the attackSpeed is 0, the fighter can attack every turn
+        if(attackSpeed == 0) return true;
+
+        if(attackSpeed != fatigue){
+            fatigue++;
+            return true;
+        }
+
+        fatigue = 0;
+        return false;
     }
 
     public int hitPoints(){
