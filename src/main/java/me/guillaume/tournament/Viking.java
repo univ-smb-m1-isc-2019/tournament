@@ -6,15 +6,21 @@ public class Viking extends Fighter{
 
 
     public Viking(){
-        super(HIT_POINTS, new OneHandAxe());
+        super(HIT_POINTS);
+        equip("one_hand_axe");
+
     }
 
     public Viking(String type){
-        super(HIT_POINTS, new OneHandAxe());
+        super(HIT_POINTS);
 
     }
 
-    public Viking equip(String equipment){
+    public Viking equip(String equipmentName){
+        Equipment e = new EquipmentFactory().getEquipment(equipmentName);
+
+        if(e instanceof Weapon) weapon = (Weapon) e;
+        else defenseEquipment.add((Defense) e);
 
         return this;
     }

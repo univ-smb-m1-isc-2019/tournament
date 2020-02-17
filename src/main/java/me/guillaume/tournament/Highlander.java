@@ -14,7 +14,12 @@ public class Highlander extends Fighter{
 
     }
 
-    public Highlander equip(String equipment){
+    public Highlander equip(String equipmentName){
+        Equipment e = new EquipmentFactory().getEquipment(equipmentName);
+
+        if(e instanceof Weapon) weapon = (Weapon) e;
+        else defenseEquipment.add((Defense) e);
+
         return this;
     }
 }
