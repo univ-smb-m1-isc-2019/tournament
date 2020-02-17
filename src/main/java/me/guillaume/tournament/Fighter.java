@@ -1,7 +1,11 @@
 package me.guillaume.tournament;
 
+import java.util.ArrayList;
+
 public abstract class Fighter {
-    private int hp;
+    protected int hp;
+    protected int dmg;
+    protected ArrayList<Portable> arms;
 
     public Fighter() {
     }
