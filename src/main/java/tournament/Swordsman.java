@@ -6,6 +6,7 @@ public class Swordsman extends Fighter {
     public Swordsman() {
         super.dmg = 5;
         super.hp = 100;
+        super.mainhand = new Weapon("1 hand sword");
     }
 
     public Swordsman(String name) {
