@@ -7,11 +7,13 @@ public class Swordsman extends Champion{
     }
 
     public Swordsman() {
-        super.name = "Viking";
+        super.name = "Swordsman";
+        super.hp = 100;
+        this.weapon = new Weapon("sword",5,1);
     }
 
-    public boolean hitPoints() {
-        return false;
+    public int hitPoints() {
+        return this.hp;
     }
 
     public Swordsman equip(String buckler) {

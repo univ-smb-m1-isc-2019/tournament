@@ -8,10 +8,12 @@ public class Viking extends Champion {
 
     public Viking() {
         super.name = "Viking";
+        super.hp = 120;
+        this.weapon = new Weapon("axe",6,1);
     }
 
-    public boolean hitPoints() {
-        return false;
+    public int hitPoints() {
+        return this.hp;
     }
 
     public Viking equip(String buckler) {
