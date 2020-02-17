@@ -1,13 +1,21 @@
 package me.luca.tournament;
 
 public class Armor extends Equipment{
-    public Armor(String name, int i) {
-        super(name, i);
+    private  int received;
+    private  int delivered;
+
+    public Armor(String name, int received, int delivered) {
+        super(name);
+        this.received = received;
+        this.delivered = delivered;
     }
 
-    @Override
-    public int getDmg() {
-        return 0;
+    public int getReceived() {
+        return received;
+    }
+
+    public int getDelivered() {
+        return delivered;
     }
 
     @Override
@@ -18,5 +26,10 @@ public class Armor extends Equipment{
     @Override
     public int hit() {
         return 0;
+    }
+
+    @Override
+    public void setDura(int i) {
+
     }
 }

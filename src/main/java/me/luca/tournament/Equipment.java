@@ -1,31 +1,34 @@
 package me.luca.tournament;
 
 public abstract class Equipment {
-    protected int dura;
     protected String name;
-    protected int dmg;
 
-    public Equipment(String name, int i) {
-        this.name = name;
-        this.dmg = i;
-    }
 
     public Equipment(String name) {
         this.name = name;
-        this.dmg = 0;
+
     }
 
     public static Equipment convertiseur(String name) {
-        return new defEquipment("z",0);
+        if (name =="buckler" ) {
+            return new defEquipment(name,3);
+        }
+        if(name == "armor"){
+            return new Armor(name,3,1);
+        }
+        if (name == "axe"){
+            return new offEquipment("hand axe",6);
+        }
+    return null;
     }
-
-    public void setDura(int dura) {
-        this.dura = dura;
-    }
-
-    public abstract int getDmg();
 
     public abstract int getDura();
 
     public abstract int hit();
+
+    public abstract void setDura(int i);
+
+    public abstract int getDelivered();
+
+    public abstract int getReceived();
 }

@@ -4,20 +4,18 @@ public class offEquipment extends Equipment {
 
     public int nbCoup =-1;
     public int rNbCoup=-1;
+    public int dmg;
 
     public offEquipment(String name, int dmg) {
-        super(name,dmg);
+        super(name);
+        this.dmg=dmg;
     }
 
     public offEquipment(String name, int dmg, int nbcoup) {
-        super(name,dmg);
+        super(name);
+        this.dmg=dmg;
         this.nbCoup = nbcoup;
         this.rNbCoup = nbCoup;
-    }
-
-
-    public int getDmg() {
-        return super.dmg;
     }
 
     public int hit(){
@@ -31,11 +29,26 @@ public class offEquipment extends Equipment {
             nbCoup -=1;
         }
 
-        return super.dmg;
+        return this.dmg;
 
 
 
 
+    }
+
+    @Override
+    public void setDura(int i) {
+
+    }
+
+    @Override
+    public int getDelivered() {
+        return 0;
+    }
+
+    @Override
+    public int getReceived() {
+        return 0;
     }
 
     @Override

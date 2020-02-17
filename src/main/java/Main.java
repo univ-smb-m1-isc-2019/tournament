@@ -1,3 +1,4 @@
+import me.luca.tournament.Heroes;
 import me.luca.tournament.Highlander;
 import me.luca.tournament.Swordsman;
 import me.luca.tournament.Viking;
@@ -11,13 +12,12 @@ public class Main {
                 .equip("armor");
 
         ;
+        System.out.println(swordsman.toString());
 
-        swordsman.engage(highlander);
+        highlander.engage(swordsman);
 
 
         System.out.println(swordsman.toString());
-
-        swordsman.engage(highlander);
 
        System.out.println(swordsman.hitPoints());
        System.out.println(highlander.hitPoints());

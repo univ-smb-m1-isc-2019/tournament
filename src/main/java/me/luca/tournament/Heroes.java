@@ -8,6 +8,7 @@ public class Heroes {
     protected  Equipment leftHAnd =null;
     private boolean shield = false;
     private boolean haveAShield;
+    private Equipment armor;
 
     public Heroes() {
         this.name = "";
@@ -33,26 +34,47 @@ public class Heroes {
         }
     }
 
+    private void attaque(Heroes h) {
+        int var = this.hit();
+        //System.out.println(var);
+
+        if(var == 0){
+            System.out.println(this.name + "je me repose");
+
+        }else{
+            System.out.println(this.name + " attaque ");
+
+            if (!h.haveShield()){
+                h.decrasePV(var);
+            }else{
+                System.out.println(h.name + "je me deffends ");
+            }
+            h.changeShield(this);
+        }
+        }
+
+
 
     public void engage(Heroes h) {
-        while (this.getPv() >0 && h.getPv() >0){
-            if (!this.haveShield()){
-                this.decrasePV(h);
-            }
-            changeShield(h);
-            if (!h.haveShield()){
-                h.decrasePV(this);
-            }
-            h.changeShield(this);       }
+        boolean fini = (this.getPv() > 0 && h.getPv() > 0);
+        while (fini) {
+            this.attaque(h);
+            System.out.println(h.name + h.pv);
+
+                h.attaque(this);
+                System.out.println(this.pv);
+
+
+            fini = (this.getPv() > 0 && h.getPv() > 0);
+        }
     }
+
 
     private void changeShield(Heroes heroes) {
         if (this.haveAShield) {
             if (shield) {
                 shield = false;
             } else {
-
-
                 if (leftHAnd.getDura() > 0) {
                     if (heroes.HitShield()){
                         leftHAnd.setDura(leftHAnd.getDura() - 1);
@@ -78,19 +100,25 @@ public class Heroes {
         return this.shield;
     }
 
-    private void decrasePV(Heroes h) {
-        this.setPv(this.getPv() - h.hit());
+    private void decrasePV(int h) {
+        if (armor != null){
+            this.setPv(this.getPv() - (h - this.armor.getReceived()));
+
+        }else{
+            this.setPv(this.getPv() - h);
+
+        }
     }
 
     private int hit() {
         int hit = rightHand.hit();
-        if (hit > 0 ){
-            System.out.println(this.name + "j attaque ");
-            return hit;
+        if(this.armor != null ){
+            return hit-armor.getDelivered();
         }else{
-            System.out.println(this.name + "je me repose ");
-            return 0;
+            return hit;
         }
+
+
 
 
     }
@@ -101,10 +129,18 @@ public class Heroes {
 
     public Heroes equip(String name) {
         Equipment e = Equipment.convertiseur(name);
+        if(e instanceof defEquipment){
+            this.leftHAnd = e;
+            this.shield = true;
+            this.haveAShield = true;
+        }
+        if(e instanceof Armor){
+            this.armor =e;
+        }
+        if(e instanceof offEquipment){
 
-        this.leftHAnd = new defEquipment(name,3);
-        this.shield = true;
-        this.haveAShield = true;
+        }
+
         return this;
     }
 
@@ -118,6 +154,9 @@ public class Heroes {
         }
         if (leftHAnd != null){
            res += ", leftHAnd=" + leftHAnd.name;}
+        if (this.armor != null){
+            res += ", armure=" + this.armor.name;}
+
 
         res += ", shield=" + shield +
                 ", haveAShield=" + haveAShield +
