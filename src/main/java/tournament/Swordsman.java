@@ -3,12 +3,9 @@ package tournament;
 public class Swordsman extends Fighter {
 
 
-    public Swordsman(int hp, int dmg) {
-        super(hp, dmg);
-    }
-
     public Swordsman() {
-
+        super.dmg = 5;
+        super.hp = 100;
     }
 
     public Swordsman(String name) {
