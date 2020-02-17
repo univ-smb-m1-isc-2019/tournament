@@ -15,6 +15,10 @@ public abstract class Equipment {
         this.dmg = 0;
     }
 
+    public static Equipment convertiseur(String name) {
+        return new defEquipment("z",0);
+    }
+
     public void setDura(int dura) {
         this.dura = dura;
     }
@@ -22,4 +26,6 @@ public abstract class Equipment {
     public abstract int getDmg();
 
     public abstract int getDura();
+
+    public abstract int hit();
 }

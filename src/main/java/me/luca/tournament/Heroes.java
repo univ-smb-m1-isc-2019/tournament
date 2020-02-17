@@ -52,14 +52,11 @@ public class Heroes {
                 shield = false;
             } else {
 
-                System.out.println(leftHAnd.getDura());
 
                 if (leftHAnd.getDura() > 0) {
                     if (heroes.HitShield()){
-                        System.out.println("t)");
                         leftHAnd.setDura(leftHAnd.getDura() - 1);
                     }
-                    System.out.println(leftHAnd.getDura());
                     shield = true;
 
                 }
@@ -71,7 +68,6 @@ public class Heroes {
 
     private boolean HitShield() {
         offEquipment  axe = new offEquipment("hand axe",6);
-        System.out.println(this.name);
         if(leftHAnd != null && rightHand != null){
             return (leftHAnd.name.equals("hand axe") || rightHand.name.equals("hand axe"));
         }
@@ -83,7 +79,20 @@ public class Heroes {
     }
 
     private void decrasePV(Heroes h) {
-        this.setPv(this.getPv() - h.rightHand.getDmg());
+        this.setPv(this.getPv() - h.hit());
+    }
+
+    private int hit() {
+        int hit = rightHand.hit();
+        if (hit > 0 ){
+            System.out.println(this.name + "j attaque ");
+            return hit;
+        }else{
+            System.out.println(this.name + "je me repose ");
+            return 0;
+        }
+
+
     }
 
     public int  hitPoints() {
@@ -91,6 +100,8 @@ public class Heroes {
     }
 
     public Heroes equip(String name) {
+        Equipment e = Equipment.convertiseur(name);
+
         this.leftHAnd = new defEquipment(name,3);
         this.shield = true;
         this.haveAShield = true;

@@ -1,12 +1,9 @@
 package me.luca.tournament;
 
-public class defEquipment extends Equipment {
-
-    public defEquipment(String name, int i) {
-        super(name);
-        super.dura = i;
+public class Armor extends Equipment{
+    public Armor(String name, int i) {
+        super(name, i);
     }
-
 
     @Override
     public int getDmg() {
@@ -15,7 +12,7 @@ public class defEquipment extends Equipment {
 
     @Override
     public int getDura() {
-        return super.dura;
+        return 0;
     }
 
     @Override

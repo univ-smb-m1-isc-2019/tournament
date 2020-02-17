@@ -1,20 +1,26 @@
+import me.luca.tournament.Highlander;
 import me.luca.tournament.Swordsman;
 import me.luca.tournament.Viking;
 
 public class Main {
     public static void main (String[] args){
-        Swordsman swordsman = new Swordsman()
-                .equip("buckler");
+        Highlander highlander = new Highlander();
 
-        Viking viking = new Viking()
-                .equip("buckler");
+        Swordsman swordsman = new Swordsman()
+                .equip("buckler")
+                .equip("armor");
+
+        ;
+
+        swordsman.engage(highlander);
+
 
         System.out.println(swordsman.toString());
 
-        swordsman.engage(viking);
+        swordsman.engage(highlander);
 
        System.out.println(swordsman.hitPoints());
-       System.out.println(viking.hitPoints());
+       System.out.println(highlander.hitPoints());
 
 
     }
