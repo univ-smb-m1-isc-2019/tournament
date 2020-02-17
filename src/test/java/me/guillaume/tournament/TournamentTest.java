@@ -2,6 +2,9 @@ package me.guillaume.tournament;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import pack.Highlander;
+import pack.Swordsman;
+import pack.Viking;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
