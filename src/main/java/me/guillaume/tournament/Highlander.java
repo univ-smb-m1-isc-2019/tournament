@@ -1,14 +1,14 @@
 package me.guillaume.tournament;
 
-public class Highlander {
-    public Highlander(String veteran) {
+public class Highlander extends Fighter{
+
+    public Highlander(String type) {
+     super(type);
     }
 
     public Highlander() {
 
     }
 
-    public boolean hitPoints() {
-        return true;
-    }
+
 }
