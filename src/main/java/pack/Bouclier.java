@@ -27,6 +27,14 @@ public class Bouclier {
     }
 
     public boolean estCasse(){
-        return this.durability == 0;
+        return this.durability <= 0;
+    }
+
+    public void parer(){
+        this.vientDeParer = true;
+    }
+
+    public void passTurn(){
+        this.vientDeParer = false;
     }
 }
