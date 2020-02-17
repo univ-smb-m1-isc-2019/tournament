@@ -1,16 +1,18 @@
 package me.luca.tournament;
 
-public class Equipment {
+public abstract class Equipment {
+    protected String name;
+    protected int dmg;
 
-    private final String name;
-    private final int dmg;
-
-    public int getDmg() {
-        return dmg;
-    }
-
-    public Equipment(String name, int dmg) {
+    public Equipment(String name, int i) {
         this.name = name;
-        this.dmg = dmg;
+        this.dmg = i;
     }
+
+    public Equipment(String name) {
+        this.name = name;
+        this.dmg = 0;
+    }
+
+    public abstract int getDmg();
 }

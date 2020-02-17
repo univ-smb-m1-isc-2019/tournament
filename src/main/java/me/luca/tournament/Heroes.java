@@ -4,7 +4,21 @@ public class Heroes {
 
     protected String name;
     protected int pv;
-    protected  Equipment equipment;
+    protected  Equipment rightHand;
+    protected  Equipment leftHAnd;
+
+    public Heroes() {
+        this.name = "";
+        this.leftHAnd = null;
+    }
+
+    public Heroes(String name)
+    {
+        this.name = name;
+        this.leftHAnd = null;
+
+    }
+
 
     public int getPv() {
         return pv;
@@ -18,13 +32,6 @@ public class Heroes {
         }
     }
 
-    public Heroes() {
-        this.name = "";
-    }
-
-    public Heroes(String name) {
-        this.name = name;
-    }
 
     public void engage(Heroes h) {
         while (this.getPv() >0 && h.getPv() >0){
@@ -34,15 +41,15 @@ public class Heroes {
     }
 
     private void decrasePV(Heroes h) {
-        this.setPv(this.getPv() - h.equipment.getDmg());
+        this.setPv(this.getPv() - h.rightHand.getDmg());
     }
 
     public int  hitPoints() {
         return this.pv;
     }
 
-    public Heroes equip(String buckler) {
-
+    public Heroes equip(String name) {
+        this.leftHAnd = new defEquipment(name);
         return this;
     }
 }
