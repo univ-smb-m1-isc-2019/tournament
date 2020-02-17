@@ -5,12 +5,11 @@ public class Swordsman extends Fighter{
     private final static int HIT_POINTS = 100;
 
     public Swordsman(){
-        super(HIT_POINTS);
-
+        super(HIT_POINTS, new OneHandSword());
     }
 
     public Swordsman(String type){
-        super(HIT_POINTS);
+        super(HIT_POINTS, new OneHandSword());
 
     }
 

@@ -6,11 +6,11 @@ public class Viking extends Fighter{
 
 
     public Viking(){
-        super(HIT_POINTS);
+        super(HIT_POINTS, new OneHandAxe());
     }
 
     public Viking(String type){
-        super(HIT_POINTS);
+        super(HIT_POINTS, new OneHandAxe());
 
     }
 
