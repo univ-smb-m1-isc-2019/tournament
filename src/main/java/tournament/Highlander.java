@@ -15,18 +15,11 @@ public class Highlander extends Fighter{
         super(s);
     }
 
-    public int hitPoints() {
-        return super.hitPoints();
-    }
 
     @Override
     public Highlander equip(String axe) {
         return null;
     }
 
-    @Override
-    public void engage(Fighter fighter) {
-        super.engage(fighter);
-    }
 
 }

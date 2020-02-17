@@ -5,7 +5,7 @@ public abstract class Fighter {
     private int hitPoints;
     private int damage;
 
-    protected Fighter(int hitPoints,int damage)
+    public Fighter(int hitPoints,int damage)
     {
         setHitPoints(hitPoints);
         setDamage(damage);
@@ -13,12 +13,12 @@ public abstract class Fighter {
     }
 
 
-    protected Fighter(String elt)
+    public Fighter(String elt)
     {
 
     }
 
-    protected void engage(Fighter fighter)
+    public void engage(Fighter fighter)
     {
 
         while (this.isNotDead() && fighter.isNotDead())
@@ -31,11 +31,11 @@ public abstract class Fighter {
 
     private void isAttackedBy(Fighter fighter)
     {
-        setHitPoints(getHitPoints() - fighter.getDamage());
-
+        int nextLife = getHitPoints() - fighter.getDamage();
+        setHitPoints(Math.max(nextLife, 0));
     }
 
-    protected int hitPoints()
+    public int hitPoints()
     {
         return getHitPoints();
     }
@@ -44,21 +44,21 @@ public abstract class Fighter {
 
     public boolean isNotDead()
     {
-        return getHitPoints() != 0;
+        return getHitPoints() > 0;
     }
 
 
 
-    protected void setHitPoints(int hitPoints)
+    public void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
     }
-    protected int getHitPoints()
+    public int getHitPoints()
     {
         return this.hitPoints;
     }
-    protected void setDamage(int damage){this.damage = damage;}
-    protected  int getDamage(){return this.damage;}
+    public void setDamage(int damage){this.damage = damage;}
+    public  int getDamage(){return this.damage;}
 
 
 

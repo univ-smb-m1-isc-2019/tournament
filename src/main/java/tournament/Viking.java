@@ -23,9 +23,5 @@ public class Viking extends Fighter {
         return null;
     }
 
-    @Override
-    public void engage(Fighter fighter) {
-        super.engage(fighter);
-    }
 
 }

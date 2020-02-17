@@ -14,17 +14,9 @@ public class Swordsman extends Fighter {
         super(s);
     }
 
-    public int hitPoints() {
-        return super.hitPoints();
-    }
-
     @Override
     public Swordsman equip(String axe) {
         return null;
     }
 
-    @Override
-    public void engage(Fighter fighter) {
-        super.engage(fighter);
-    }
 }
