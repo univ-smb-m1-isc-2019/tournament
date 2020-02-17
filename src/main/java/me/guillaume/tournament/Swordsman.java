@@ -7,6 +7,7 @@ public class Swordsman extends Fighter {
         setDmg(ohsw.getDmg());
     }
 
+    // TODO A corriger.
     public Swordsman(String state) {
         super(state);
     }
