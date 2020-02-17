@@ -5,7 +5,7 @@ public class Viking extends Warrior{
     public Viking(){
         this.name = "Viking";
         this.hitPoints = 120;
-        this.weapon = new Weapon("axe",6);
+        super.equip("axe");
 
     }
 
@@ -19,8 +19,6 @@ public class Viking extends Warrior{
         return this.hitPoints;
     }
 
-    public Viking equip(String stuff){
-        return null;
-    }
+
 
 }

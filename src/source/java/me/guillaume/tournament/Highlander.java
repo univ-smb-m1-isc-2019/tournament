@@ -7,9 +7,7 @@ public class Highlander extends Warrior {
 
     }
 
-    public void engage(Warrior warrior){
-        System.out.println("sa compile");
-    }
+
 
     public Highlander(String str){
 
@@ -19,7 +17,5 @@ public class Highlander extends Warrior {
         return this.hitPoints;
     }
 
-    public Highlander equip(String stuff){
-        return null;
-    }
+
 }

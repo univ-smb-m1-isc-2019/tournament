@@ -41,10 +41,10 @@ public class TournamentTest {
     @Test
     public void SwordsmanWithBucklerVsVikingWithBuckler() {
 
-        Swordsman swordsman = new Swordsman()
+        Swordsman swordsman = (Swordsman) new Swordsman()
                 .equip("buckler");
 
-        Viking viking = new Viking()
+        Viking viking = (Viking) new Viking()
                 .equip("buckler");
 
         swordsman.engage(viking);
@@ -64,7 +64,7 @@ public class TournamentTest {
 
         Highlander highlander = new Highlander();
 
-        Swordsman swordsman = new Swordsman()
+        Swordsman swordsman = (Swordsman) new Swordsman()
                 .equip("buckler")
                 .equip("armor");
 
@@ -85,7 +85,7 @@ public class TournamentTest {
     @Ignore // interesting but might be a bit long...
     public void ViciousSwordsmanVsVeteranHighlander() {
 
-        Swordsman swordsman = new Swordsman("Vicious")
+        Swordsman swordsman = (Swordsman) new Swordsman("Vicious")
                 .equip("axe")
                 .equip("buckler")
                 .equip("armor");

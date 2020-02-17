@@ -6,7 +6,7 @@ public class Swordsman extends Warrior{
     public Swordsman(){
         this.name = "Swordsman";
         this.hitPoints = 100;
-        this.weapon = new Weapon("sword",5);
+        super.equip("sword");
     }
 
     public Swordsman(String str){
@@ -19,8 +19,5 @@ public class Swordsman extends Warrior{
         return this.hitPoints;
     }
 
-    public Swordsman equip(String stuff){
 
-        return null;
-    }
 }
