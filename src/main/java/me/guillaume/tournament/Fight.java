@@ -1,16 +1,11 @@
 package me.guillaume.tournament;
 
-import java.util.ArrayList;
-
 public class Fight {
-    private ArrayList<Fighter> fighters;
-
-    public Fight(ArrayList<Fighter> fighters) {
-        this.fighters = fighters;
-        startFight();
+    public Fight(Fighter fighter1, Fighter fighter2) {
+        startFight(fighter1, fighter2);
     }
 
-    private void startFight() {
+    private void startFight(Fighter f1, Fighter f2) {
 
     }
 }

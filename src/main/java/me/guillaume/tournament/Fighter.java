@@ -20,10 +20,6 @@ public abstract class Fighter {
     }
 
     public void engage(Fighter other) {
-        ArrayList<Fighter> fighters = new ArrayList<>();
-        fighters.add(this);
-        fighters.add(other);
-
-        Fight fight = new Fight(fighters);
+        new Fight(this, other);
     }
 }
