@@ -1,10 +1,10 @@
 package me.guillaume.tournament;
 
 public class Viking extends Fighter {
-    int hitPoints = super.hitPoints + 20;
-    int damagePoints = super.damagePoints + 1;
 
     public Viking() {
+        super.hitPoints += 20;
+        super.damagePoints += 1;
     }
 
     int hitPoints(){
