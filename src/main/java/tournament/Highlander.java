@@ -1,11 +1,12 @@
 package tournament;
 
 public class Highlander extends Fighter{
-    private static int VIE = 150;
+    private static int LIFE = 150;
+    private static int DAMAGE = 12;
 
     public Highlander()
     {
-        super(VIE);
+        super(LIFE,DAMAGE);
 
     }
 
@@ -21,6 +22,11 @@ public class Highlander extends Fighter{
     @Override
     public Highlander equip(String axe) {
         return null;
+    }
+
+    @Override
+    public void engage(Fighter fighter) {
+        super.engage(fighter);
     }
 
 }

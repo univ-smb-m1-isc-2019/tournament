@@ -1,11 +1,12 @@
 package tournament;
 
 public class Viking extends Fighter {
-    private static int VIE = 120;
+    private static int DAMAGE = 6;
+    private static int LIFE = 120;
 
     public Viking()
     {
-        super(VIE);
+        super(LIFE,DAMAGE);
     }
 
     public Viking(String s)
@@ -20,6 +21,11 @@ public class Viking extends Fighter {
     @Override
     public Viking equip(String axe) {
         return null;
+    }
+
+    @Override
+    public void engage(Fighter fighter) {
+        super.engage(fighter);
     }
 
 }
