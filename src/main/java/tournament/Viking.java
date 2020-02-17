@@ -4,12 +4,12 @@ public class Viking extends Fighter {
 
     public Viking()
     {
-
+        super(120);
     }
 
     public Viking(String s)
     {
-
+        super(s);
     }
 
     @Override

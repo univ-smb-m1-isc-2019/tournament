@@ -4,12 +4,12 @@ public class Highlander extends Fighter{
 
     public Highlander()
     {
-
+        super(150);
     }
 
     public Highlander(String s)
     {
-
+        super(s);
     }
 
     @Override

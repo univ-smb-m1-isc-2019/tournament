@@ -4,7 +4,7 @@ public class Swordsman extends Fighter {
 
     public Swordsman()
     {
-        super();
+        super(100);
     }
 
     public Swordsman(String s)
