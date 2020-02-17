@@ -16,8 +16,7 @@ public class Viking extends Heroes {
 
     }
 
-    public Viking equip(String buckler) {
-
-        return this;
+    public Viking equip(String s) {
+        return (Viking)super.equip(s);
     }
 }

@@ -10,4 +10,9 @@ public class offEquipment extends Equipment {
         return super.dmg;
     }
 
+    @Override
+    public int getDura() {
+        return 0;
+    }
+
 }

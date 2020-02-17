@@ -1,6 +1,7 @@
 package me.luca.tournament;
 
 public abstract class Equipment {
+    protected int dura;
     protected String name;
     protected int dmg;
 
@@ -14,5 +15,11 @@ public abstract class Equipment {
         this.dmg = 0;
     }
 
+    public void setDura(int dura) {
+        this.dura = dura;
+    }
+
     public abstract int getDmg();
+
+    public abstract int getDura();
 }

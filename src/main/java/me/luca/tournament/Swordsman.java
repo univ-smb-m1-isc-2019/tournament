@@ -15,8 +15,12 @@ public class Swordsman extends Heroes {
 
     }
 
-    public Swordsman equip(String buckler) {
+    public Swordsman equip(String s) {
+        return (Swordsman)super.equip(s);
+    }
 
-        return this;
+    @Override
+    public String toString() {
+         return super.toString();
     }
 }
