@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 /**
  *
  * This is a duel simulation
@@ -14,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  */
 public class TournamentTest {
-
 
     /**
      * A Swordsman has 100 hit points and use a 1 hand sword that does 5 dmg
