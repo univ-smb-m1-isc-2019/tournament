@@ -1,8 +1,6 @@
 package me.arnaud.equipments.weapons;
 
-import me.arnaud.equipments.EquipmentAbstract;
-
-public abstract class WeaponAbstract extends EquipmentAbstract {
+public abstract class WeaponAbstract {
     private int dmg;
     public WeaponAbstract(int dmg){
         this.dmg = dmg;

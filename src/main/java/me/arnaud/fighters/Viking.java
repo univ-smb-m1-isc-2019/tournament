@@ -9,8 +9,8 @@ public class Viking extends FighterAbstract {
     }
 
     public Viking equip(String equipment){
-        if (equipment == "buckler"){
-            this.equipments.add(new Buckler());
+        if (equipment.equals("buckler")){
+            this.buckler = new Buckler();
         }
         return this;
     }
