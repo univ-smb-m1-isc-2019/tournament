@@ -1,6 +1,7 @@
 package me.guillaume.tournament;
 
-public class Highlander {
+public class Highlander extends Fighter {
+    int hitPoints = super.hitPoints + 50;
 
     public Highlander() {
     }
@@ -9,7 +10,7 @@ public class Highlander {
     }
 
     int hitPoints(){
-        return 0;
+        return Math.max(hitPoints, 0);
     }
 
 }

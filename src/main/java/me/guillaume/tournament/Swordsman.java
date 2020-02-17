@@ -1,8 +1,7 @@
 package me.guillaume.tournament;
 
-import me.guillaume.tournament.Highlander;
-
-public class Swordsman {
+public class Swordsman extends Fighter {
+    int hitPoints = super.hitPoints;
 
     public Swordsman() {
     }
@@ -11,7 +10,7 @@ public class Swordsman {
     }
 
     int hitPoints(){
-        return 0;
+        return Math.max(hitPoints, 0);
     }
 
     Swordsman equip(String item){

@@ -1,12 +1,13 @@
 package me.guillaume.tournament;
 
-public class Viking {
+public class Viking extends Fighter {
+    int hitPoints = super.hitPoints + 20;
 
     public Viking() {
     }
 
     int hitPoints(){
-        return 0;
+        return Math.max(hitPoints, 0);
     }
 
     Viking equip(String item){
