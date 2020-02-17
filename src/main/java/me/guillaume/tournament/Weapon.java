@@ -6,4 +6,8 @@ public abstract class Weapon extends Portable {
     public Weapon() {
         super();
     }
+
+    public int getDmg() {
+        return dmg;
+    }
 }

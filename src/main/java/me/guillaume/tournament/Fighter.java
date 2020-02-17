@@ -13,7 +13,7 @@ public abstract class Fighter {
     public Fighter(String state) {
     }
 
-    public void setDmg(int dmg) {
+    protected void setDmg(int dmg) {
         this.dmg = dmg;
     }
 
