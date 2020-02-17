@@ -1,21 +1,18 @@
 package me.guillaume.tournament;
 
-public class Swordsman {
-    public int hitPoints;
+public class Swordsman extends Warrior{
+
 
     public Swordsman(){
-
+        this.hitPoints = 100;
+        this.weapon = new Weapon("sword",5);
     }
 
     public Swordsman(String str){
 
     }
 
-    public void engage(Viking viking){
-        System.out.println("sa compile");
-    }
-
-    public void engage(Highlander highlander){
+    public void engage(Warrior warrior){
         System.out.println("sa compile");
     }
 

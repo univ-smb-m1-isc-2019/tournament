@@ -1,10 +1,14 @@
 package me.guillaume.tournament;
 
-public class Highlander {
-    public int hitPoints;
+public class Highlander extends Warrior {
+
 
     public Highlander(){
 
+    }
+
+    public void engage(Warrior warrior){
+        System.out.println("sa compile");
     }
 
     public Highlander(String str){
