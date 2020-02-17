@@ -2,6 +2,7 @@ package me.guillaume.tournament;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import tournament.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +18,7 @@ public class TournamentTest {
 
 
     /**
-     * A Swordsman has 100 hit points and use a 1 hand sword that does 5 dmg
+     * A tournament.Swordsman has 100 hit points and use a 1 hand sword that does 5 dmg
      * A Viking has 120 hit points and use a 1 hand axe that does 6 dmg
      */
     @Test
@@ -62,7 +63,7 @@ public class TournamentTest {
     @Test
     public void ArmoredSwordsmanVsViking() {
 
-        Highlander highlander = new Highlander();
+        Highlander highlander = new Highlander("Veteran");
 
         Swordsman swordsman = new Swordsman()
                 .equip("buckler")
@@ -76,7 +77,7 @@ public class TournamentTest {
     }
 
     /**
-     * a vicious Swordsman is a Swordsman that put poison on his weapon.
+     * a vicious tournament.Swordsman is a tournament.Swordsman that put poison on his weapon.
      * poison add 20 damages on two first blows
      * a veteran Highlander goes Berserk once his hit points are under 30% of his initial total
      * once Berserk, he doubles his damages
