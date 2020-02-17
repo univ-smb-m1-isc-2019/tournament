@@ -1,4 +1,4 @@
-package me.arnaud.weapons;
+package me.arnaud.equipments.weapons;
 
 public class OneHandAxe extends WeaponAbstract {
     public OneHandAxe() {

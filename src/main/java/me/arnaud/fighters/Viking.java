@@ -1,13 +1,17 @@
 package me.arnaud.fighters;
 
-import me.arnaud.fighters.FighterAbstract;
-import me.arnaud.weapons.OneHandAxe;
-import me.arnaud.weapons.WeaponAbstract;
+import me.arnaud.equipments.defences.*;
+import me.arnaud.equipments.weapons.OneHandAxe;
 
 public class Viking extends FighterAbstract {
     public Viking() {
         super(new OneHandAxe(), 120);
     }
 
-
+    public Viking equip(String equipment){
+        if (equipment == "buckler"){
+            this.equipments.add(new Buckler());
+        }
+        return this;
+    }
 }
