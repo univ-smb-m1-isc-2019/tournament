@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package me.luca.tournament;
 
 import org.junit.Ignore;
 import org.junit.Test;
