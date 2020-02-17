@@ -11,6 +11,11 @@ public class Weapon {
         this.nbHand = nbHand;
 
     }
+
+    public String getName(){
+        return this.name;
+    }
+
     public int getDmg(){
         return this.dmg;
     }

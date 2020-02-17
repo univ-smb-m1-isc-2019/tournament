@@ -18,8 +18,8 @@ public class Swordsman extends Fighter {
         this.weapon = new Weapon("sword",5,1);
     }
 
-    public Swordsman equip(String buckler) {
-        super.equipF(buckler);
+    public Swordsman equip(String equip) {
+        super.equipF(equip);
         return this;
     }
 

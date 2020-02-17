@@ -12,8 +12,8 @@ public class Viking extends Fighter {
         this.weapon = new Weapon("axe",6,1);
     }
 
-    public Viking equip(String buckler) {
-        super.equipF(buckler);
+    public Viking equip(String equip) {
+        super.equipF(equip);
         return this;
     }
 
