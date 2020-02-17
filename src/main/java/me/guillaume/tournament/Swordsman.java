@@ -1,17 +1,21 @@
 package me.guillaume.tournament;
 
-public class Swordsman {
-    public void engage(Highlander viking) {
+public class Swordsman extends Champion{
+
+    public Swordsman(String name) {
+        super(name);
     }
 
-    public void engage(Viking viking) {
+    public Swordsman() {
+        super.name = "Viking";
     }
+
     public boolean hitPoints() {
         return false;
     }
 
     public Swordsman equip(String buckler) {
 
-        return null;
+        return this;
     }
 }
