@@ -1,10 +1,11 @@
 package tournament;
 
 public class Swordsman extends Fighter {
+    private static int VIE = 100;
 
     public Swordsman()
     {
-        super(100);
+        super(VIE);
     }
 
     public Swordsman(String s)
@@ -12,9 +13,8 @@ public class Swordsman extends Fighter {
         super(s);
     }
 
-    @Override
     public int hitPoints() {
-        return 0;
+        return super.hitPoints();
     }
 
     @Override

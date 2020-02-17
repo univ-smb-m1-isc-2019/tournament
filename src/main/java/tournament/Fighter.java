@@ -4,32 +4,35 @@ public abstract class Fighter {
 
     private int hitPoints;
 
-    public Fighter(int hitPoints)
+    protected Fighter(int hitPoints)
     {
         setHitPoints(hitPoints);
 
     }
 
-    private void setHitPoints(int hitPoints)
+    protected void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
     }
-    public int getHitPoints()
+    protected int getHitPoints()
     {
         return this.hitPoints;
     }
 
-    public Fighter(String elt)
+    protected Fighter(String elt)
     {
 
     }
 
-    public void engage(Fighter fighter)
+    protected void engage(Fighter fighter)
     {
 
     }
 
-    public abstract int hitPoints();
+    protected int hitPoints()
+    {
+        return getHitPoints();
+    }
 
     public abstract Fighter equip(String axe);
 }

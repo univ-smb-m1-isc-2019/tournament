@@ -1,10 +1,11 @@
 package tournament;
 
 public class Viking extends Fighter {
+    private static int VIE = 120;
 
     public Viking()
     {
-        super(120);
+        super(VIE);
     }
 
     public Viking(String s)
@@ -12,9 +13,8 @@ public class Viking extends Fighter {
         super(s);
     }
 
-    @Override
     public int hitPoints() {
-        return 0;
+        return super.hitPoints();
     }
 
     @Override
