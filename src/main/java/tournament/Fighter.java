@@ -6,6 +6,7 @@ public abstract class Fighter {
     private int handFree;
     private Buckler buckler;
     private Armor armor;
+    private int hitGiven;
 
 
 
@@ -17,6 +18,7 @@ public abstract class Fighter {
         setBuckler(null);
         setArmor(null);
         setDefaultWeapon(new Weapon(weapon));
+        setHitGiven(0);
     }
 
 
@@ -39,27 +41,77 @@ public abstract class Fighter {
 
     private void isAttackedBy(Fighter fighter)
     {
-        int nextLife;
-        if(hasBuckler() && getBuckler().getDurability() > 0 && getBuckler().isWillCancel())
-        {
-            nextLife = this.getHitPoints();
-            if(fighter.getDefaultWeapon().isBucklerBreaker())
-            {
-                getBuckler().setDurability(getBuckler().getDurability()-1);
-            }
+        System.out.println("###########################################");
+        System.out.println("Classe de l'attaquant : "+fighter.getClass());
+        System.out.println("Reduction des degats de l'attaquant : "+fighter.getArmorReducingDamage());
+        System.out.println("Classe de l'attaque : " + this.getClass());
+        System.out.println("Reduction des choc de l'attaque : " + getArmorReducingShock());
+        System.out.println("Vie de l'attaque avant : " +getHitPoints());
 
+        int nextLife;
+        if(!fighter.getDefaultWeapon().hasMaxHit() ||
+                (fighter.getDefaultWeapon().hasMaxHit() && fighter.getHitGiven() != fighter.getDefaultWeapon().getMaxHit())) {
+
+            if (hasBuckler() && getBuckler().getDurability() > 0 && getBuckler().isWillCancel()) {
+                nextLife = this.getHitPoints();
+                if (fighter.getDefaultWeapon().isBucklerBreaker()) {
+                    getBuckler().setDurability(getBuckler().getDurability() - 1);
+                }
+
+            } else {
+                /*Dans le cas ou le bouclier ne bloque pas l'attaque, la prochaine valeur des hitPoints correspond
+                 * aux degats de l'arme de l'attanquant moins la reduction de degats cause par l'armure qu'il peut porter
+                 * moins les degats que l'armure que le receveur peut porter, si aucun des deux ne portent d'armure, l'amre fait des degats normaux*/
+
+                nextLife = getHitPoints() - (fighter.getDefaultWeapon().getDamage() - fighter.getArmorReducingDamage() - getArmorReducingShock());
+                fighter.setHitGiven(getHitGiven() + 1);
+            }
+            if(hasBuckler() && getBuckler().getDurability()>0)
+            {
+                getBuckler().setWillCancel(!getBuckler().isWillCancel());
+            }
         }
         else
         {
-            nextLife = getHitPoints() - fighter.getDefaultWeapon().getDamage();
+            nextLife = this.getHitPoints();
+            fighter.setHitGiven(0);
         }
 
-        if(hasBuckler() && getBuckler().getDurability()>0)
-        {
-            getBuckler().setWillCancel(!getBuckler().isWillCancel());
-        }
+
+
+
+
 
         setHitPoints(Math.max(nextLife, 0));
+
+
+
+        System.out.println("Vie de l'attaque apres : " +getHitPoints());
+        System.out.println("###########################################");
+    }
+
+    public int getArmorReducingDamage()
+    {
+        if(hasArmor())
+        {
+            return getArmor().getReduceDamage();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int getArmorReducingShock()
+    {
+        if(hasArmor())
+        {
+            return getArmor().getReduceShock();
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 
@@ -81,7 +133,8 @@ public abstract class Fighter {
                 break;
 
             case "armor":
-
+                System.out.println("setarmor");
+                setArmor(new Armor());
                 break;
 
             case"axe":
@@ -94,9 +147,7 @@ public abstract class Fighter {
                 break;
             default:
                 break;
-
         }
-
         return this;
     }
 
@@ -156,5 +207,11 @@ public abstract class Fighter {
         return getArmor() != null;
     }
 
+    public int getHitGiven() {
+        return hitGiven;
+    }
 
+    public void setHitGiven(int hitGiven) {
+        this.hitGiven = hitGiven;
+    }
 }

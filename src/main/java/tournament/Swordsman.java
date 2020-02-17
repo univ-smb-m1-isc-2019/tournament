@@ -2,7 +2,6 @@ package tournament;
 
 public class Swordsman extends Fighter {
     private static int LIFE = 100;
-    private static int HANDFREE ;
     private static String DEFAULTWEAPON = "sword";
 
     public Swordsman()

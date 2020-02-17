@@ -1,21 +1,14 @@
 package tournament;
 
 public class Buckler {
-    private static int DURABILITYMAX = 3;
+    private static int DURABILITY_MAX = 3;
     private boolean willCancel;
     private int durability;
     private int handNeeded;
 
-    public Buckler(int handNeeded)
-    {
-        setDurability(DURABILITYMAX);
-        setWillCancel(true);
-        setHandNeeded(handNeeded);
-    }
-
     public Buckler()
     {
-        setDurability(DURABILITYMAX);
+        setDurability(DURABILITY_MAX);
         setWillCancel(true);
         setHandNeeded(1);
     }
