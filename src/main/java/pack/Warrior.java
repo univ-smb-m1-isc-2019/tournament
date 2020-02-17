@@ -20,7 +20,7 @@ public abstract class Warrior{
 
     public void engage(Warrior warrior) {
         while(this.hp > 0 && warrior.hitPoints()>0){
-
+            //System.out.println (" Guerrier 1 : " +this.hp +" Guerrier 2 "+ warrior.hitPoints());
             //Les deux combattants se frappent
             getHit(warrior.getDamage());
             warrior.getHit(getDamage());
