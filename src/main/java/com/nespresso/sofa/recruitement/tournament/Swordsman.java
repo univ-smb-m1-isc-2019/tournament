@@ -1,10 +1,19 @@
 package com.nespresso.sofa.recruitement.tournament;
 
-public class Swordsman {
-
-    private int hit_points;
+public class Swordsman extends Person {
 
     public Swordsman(){
-        hit_points = 100;
+        super();
+        super.hit_points = 100;
+        super.righthand = new Weapon("hand sword",5);
+    }
+
+    public Swordsman(String name){
+        super();
+        super.name = name;
+    }
+
+    public Swordsman equip(String buckler){
+        return this;
     }
 }

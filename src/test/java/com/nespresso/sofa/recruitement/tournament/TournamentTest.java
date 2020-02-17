@@ -7,11 +7,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
- *
  * This is a duel simulation
- *
+ * <p>
  * Blow exchange are sequential, A engage B means that A will give the first blow, then B will respond
- *
  */
 public class TournamentTest {
 
