@@ -2,6 +2,7 @@ package me.guillaume.tournament;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import tournament.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
