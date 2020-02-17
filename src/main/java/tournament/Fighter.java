@@ -7,6 +7,7 @@ public abstract class Fighter {
     private Buckler buckler;
     private Armor armor;
     private int hitGiven;
+    private String behaviour;
 
 
 
@@ -23,8 +24,15 @@ public abstract class Fighter {
 
 
 
-    public Fighter(String elt)
+    public Fighter(int hitPoints,String weapon,String behaviour)
     {
+
+        setHitPoints(hitPoints);
+        setBuckler(null);
+        setArmor(null);
+        setDefaultWeapon(new Weapon(weapon));
+        setHitGiven(0);
+        setBehaviour(behaviour);
 
     }
 
@@ -41,12 +49,6 @@ public abstract class Fighter {
 
     private void isAttackedBy(Fighter fighter)
     {
-        System.out.println("###########################################");
-        System.out.println("Classe de l'attaquant : "+fighter.getClass());
-        System.out.println("Reduction des degats de l'attaquant : "+fighter.getArmorReducingDamage());
-        System.out.println("Classe de l'attaque : " + this.getClass());
-        System.out.println("Reduction des choc de l'attaque : " + getArmorReducingShock());
-        System.out.println("Vie de l'attaque avant : " +getHitPoints());
 
         int nextLife;
         if(!fighter.getDefaultWeapon().hasMaxHit() ||
@@ -80,14 +82,8 @@ public abstract class Fighter {
 
 
 
-
-
         setHitPoints(Math.max(nextLife, 0));
 
-
-
-        System.out.println("Vie de l'attaque apres : " +getHitPoints());
-        System.out.println("###########################################");
     }
 
     public int getArmorReducingDamage()
@@ -133,7 +129,6 @@ public abstract class Fighter {
                 break;
 
             case "armor":
-                System.out.println("setarmor");
                 setArmor(new Armor());
                 break;
 
@@ -213,5 +208,13 @@ public abstract class Fighter {
 
     public void setHitGiven(int hitGiven) {
         this.hitGiven = hitGiven;
+    }
+
+    public String getBehaviour() {
+        return behaviour;
+    }
+
+    public void setBehaviour(String behaviour) {
+        this.behaviour = behaviour;
     }
 }

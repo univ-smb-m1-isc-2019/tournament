@@ -11,11 +11,6 @@ public class Viking extends Fighter {
         setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
-    public Viking(String s)
-    {
-        super(s);
-    }
-
     public int hitPoints() {
         return super.hitPoints();
     }

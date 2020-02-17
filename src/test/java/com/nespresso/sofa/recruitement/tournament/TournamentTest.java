@@ -86,7 +86,7 @@ public class TournamentTest {
     @Test
     @Ignore // interesting but might be a bit long...
     public void ViciousSwordsmanVsVeteranHighlander() {
-/*
+
         Swordsman swordsman = new Swordsman("Vicious")
                 .equip("axe")
                 .equip("buckler")
@@ -98,7 +98,7 @@ public class TournamentTest {
 
         assertThat(swordsman.hitPoints()).isEqualTo(1);
         assertThat(highlander.hitPoints()).isEqualTo(0);
-*/
+
     }
 
 }

@@ -10,14 +10,14 @@ public class Highlander extends Fighter{
         setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
-    public Highlander(String s)
+    public Highlander(String behaviour)
     {
-        super(s);
+        super(LIFE,DEFAULTWEAPON,behaviour);
+        setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
     public Highlander equip(String equipement) {
         return (Highlander) super.equip(equipement);
     }
-
 
 }

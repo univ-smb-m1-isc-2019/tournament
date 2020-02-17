@@ -10,9 +10,10 @@ public class Swordsman extends Fighter {
         setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
-    public Swordsman(String s)
+    public Swordsman(String behaviour)
     {
-        super(s);
+        super(LIFE,DEFAULTWEAPON,behaviour);
+        setHandFree( 2 - getDefaultWeapon().getHandNeeded());
     }
 
     public Swordsman equip(String equipement) {
