@@ -8,18 +8,20 @@ public abstract class Warrior{
     public Warrior(int hp,Weapon weapon){
         this.hp=hp;
         this.bouclier = null;
+        this.weapon = weapon;
     }
 
     public Warrior(int hp,Weapon weapon, String stuff) {
         this.hp = hp;
         this.bouclier = null;
+        this.weapon = weapon;
         equipGear(stuff);
 
     }
 
     private void equipGear ( String stuff ){
         switch ( stuff ){
-            case " buckler ":
+            case "buckler":
                 this.bouclier = new Bouclier();
                 break;
             default:
@@ -40,18 +42,27 @@ public abstract class Warrior{
         while(this.hp > 0 && warrior.hitPoints()>0){
             //System.out.println (" Guerrier 1 : " +this.hp +" Guerrier 2 "+ warrior.hitPoints());
             //Les deux combattants se frappent
-            getHit(warrior.getDamage());
-            warrior.getHit(getDamage());
+            getHit(warrior);
+            warrior.getHit(this);
         }
     }
-    //Quand on est frappé. On fait les tests pour voir si on va perdre de la vie ou non.
-    public void getHit(int damage){
-        if ( bouclier.estCasse() || bouclier.vientDeParer() ){
-            decreaseHealthPoints(damage);
+    //Quand on est frappé par le guerrier donné en parametre, on fait ce qu'il faut pour gérer les équipements et points de vie
+    public void getHit(Warrior enemy){
+
+        if ( bouclier != null ){
+            if ( bouclier.estCasse() || bouclier.vientDeParer() ){
+                decreaseHealthPoints(enemy.weapon.getDamage());
+            }
+            if ( enemy.weapon.isShieldBreaker() ){
+                bouclier.decreaseDurability(enemy.weapon.getDamageToShield());
+            }
+        }
+        else {
+            decreaseHealthPoints(enemy.weapon.getDamage());
         }
 
     }
-
+    //On retire les hp, on gère pour ne pas tomber en dessous de 0 hp.
     private void decreaseHealthPoints(int damage){
         this.hp = this.hp - damage;
         if ( this.hp < 0){

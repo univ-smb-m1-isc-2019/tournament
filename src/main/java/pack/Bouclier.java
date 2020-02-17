@@ -20,9 +20,9 @@ public class Bouclier {
         return this.durability;
     }
 
-    public void decreaseDurability(){
+    public void decreaseDurability(int damage){
         if(this.durability > 0){
-            this.durability-=1;
+            this.durability-=damage;
         }
     }
 
