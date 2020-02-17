@@ -8,11 +8,7 @@ public class Swordsman extends Warrior{
         super(HEALTH_POINTS_BEGIN,DEFAULT_WEAPON);
     }
 
-    public Swordsman ( String stuff ){
-        super ( HEALTH_POINTS_BEGIN,DEFAULT_WEAPON, stuff);
-    }
-
     public Swordsman equip ( String stuff ){
-        return new Swordsman(stuff);
+        return (Swordsman)super.equip(stuff);
     }
 }

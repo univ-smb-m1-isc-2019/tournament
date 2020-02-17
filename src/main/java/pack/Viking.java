@@ -7,13 +7,13 @@ public class Viking extends Warrior{
     public Viking(){
         super(HEALTH_POINTS_BEGIN,DEFAULT_WEAPON);
     }
-
+/*
     public Viking(String stuff) {
         super ( HEALTH_POINTS_BEGIN,DEFAULT_WEAPON, stuff);
     }
-
+*/
     public Viking equip ( String stuff ){
-        return new Viking(stuff);
+        return (Viking)super.equip(stuff);
     }
 
 }
