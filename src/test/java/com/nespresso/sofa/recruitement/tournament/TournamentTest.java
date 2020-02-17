@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package com.nespresso.sofa.recruitement.tournament;
 
 import org.junit.Ignore;
 import org.junit.Test;
