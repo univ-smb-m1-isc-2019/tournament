@@ -7,6 +7,10 @@ public abstract class Weapon extends Portable {
         super();
     }
 
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+
     public int getDmg() {
         return dmg;
     }

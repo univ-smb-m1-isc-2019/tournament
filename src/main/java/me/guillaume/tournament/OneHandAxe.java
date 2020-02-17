@@ -4,6 +4,6 @@ public class OneHandAxe extends OneHandWeapon {
     public OneHandAxe() {
         super();
 
-        dmg = 6;
+        setDmg(6);
     }
 }
