@@ -17,8 +17,8 @@ public class TournamentTest {
 
 
     /**
-     * A Swordsman has 100 hit points and use a 1 hand sword that does 5 dmg
-     * A Viking has 120 hit points and use a 1 hand axe that does 6 dmg
+     * A me.guillaume.tournament.Swordsman has 100 hit points and use a 1 hand sword that does 5 dmg
+     * A me.guillaume.tournament.Viking has 120 hit points and use a 1 hand axe that does 6 dmg
      */
     @Test
     public void SwordsmanVsViking() {
@@ -55,7 +55,7 @@ public class TournamentTest {
     }
 
     /**
-     * an Highlander as 150 hit points and fight with a Great Sword
+     * an me.guillaume.tournament.Highlander as 150 hit points and fight with a Great Sword
      * a Great Sword is a two handed sword deliver 12 damages, but can attack only 2 every 3
      * an armor : reduce all received damages by 3 & reduce delivered damages by one
      */
@@ -76,9 +76,9 @@ public class TournamentTest {
     }
 
     /**
-     * a vicious Swordsman is a Swordsman that put poison on his weapon.
+     * a vicious me.guillaume.tournament.Swordsman is a me.guillaume.tournament.Swordsman that put poison on his weapon.
      * poison add 20 damages on two first blows
-     * a veteran Highlander goes Berserk once his hit points are under 30% of his initial total
+     * a veteran me.guillaume.tournament.Highlander goes Berserk once his hit points are under 30% of his initial total
      * once Berserk, he doubles his damages
      */
     @Test
