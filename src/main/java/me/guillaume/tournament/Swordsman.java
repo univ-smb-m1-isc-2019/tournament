@@ -2,6 +2,8 @@ package me.guillaume.tournament;
 
 public class Swordsman extends Fighter {
     public Swordsman() {
+        setHp(100);
+
         OneHandSword ohsw = new OneHandSword();
         arms.add(ohsw);
         setDmg(ohsw.getDmg());
