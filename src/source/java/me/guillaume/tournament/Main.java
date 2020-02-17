@@ -3,7 +3,8 @@ package me.guillaume.tournament;
 public class Main {
     public static void main (String[] args){
        //Test1();
-        Test2();
+        //Test2();
+        Test3();
     }
 
     public static void Test1(){
@@ -20,5 +21,15 @@ public class Main {
                 .equip("buckler");
 
         swordsman.engage(viking);
+    }
+
+    public static void Test3(){
+        Highlander highlander = new Highlander();
+
+        Swordsman swordsman = (Swordsman) new Swordsman()
+                .equip("buckler")
+                .equip("armor");
+
+        swordsman.engage(highlander);
     }
 }

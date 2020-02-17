@@ -1,17 +1,26 @@
 package me.guillaume.tournament;
 
 public class Warrior {
+    public boolean alreadyChecked = false;
     public String name;
+    public int def;
     public int hitPoints;
     public Weapon weapon;
     public OffHand offHand;
+    public Armor armor;
     public boolean fini = false;
+    public boolean noAtk = false;
 
     public void engage(Warrior warrior){
         System.out.println("le combat commence");
         while (!fini){
-            if (HaveOffHand(this)){
-
+            if (HaveArmor(this) && !this.alreadyChecked){
+                UpdateStats(this);
+                this.alreadyChecked = true;
+            }
+            if (HaveArmor(warrior) && !warrior.alreadyChecked){
+                warrior.alreadyChecked = true;
+                UpdateStats(warrior);
             }
             Attack(this,warrior);
             Attack(warrior,this);
@@ -20,6 +29,7 @@ public class Warrior {
         RegenerateHP(this);
     }
     public Warrior equip(String stuff){
+        Armor armor;
         OffHand offHand;
         Weapon weapon;
         switch(stuff) {
@@ -31,9 +41,17 @@ public class Warrior {
                 weapon = new Weapon("axe",6);
                 this.weapon = weapon;
                 break;
+            case "great sword":
+                //weapon = new Weapon("great sword",12, 0);
+                //this.weapon = weapon;
+                break;
             case "buckler":
                 offHand = new OffHand("buckler");
                 this.offHand = offHand;
+                break;
+            case "armor":
+                armor = new Armor("armor");
+                this.armor = armor;
                 break;
             default:
                 System.out.println("erreur item non reconnue");
@@ -47,10 +65,11 @@ public class Warrior {
                 Block(atk,def);
             }
             else {
-                def.hitPoints -= atk.weapon.damage;
-                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-                System.out.println("il lui reste " + def.hitPoints + " pdv");
-                }
+                    def.hitPoints -= (atk.weapon.damage - def.def);
+                    System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+                    System.out.println("il lui reste " + def.hitPoints + " pdv");
+
+            }
         }
         else{
             if (IsAlive(def)){
@@ -82,6 +101,19 @@ public class Warrior {
             return false;
     }
 
+    private boolean HaveArmor(Warrior warrior){
+        if (warrior.armor != null)
+            return true;
+        else
+            return false;
+    }
+
+
+    private void UpdateStats(Warrior warrior){
+        warrior.def = 3;
+        warrior.weapon.damage -= 1;
+    }
+
     private void Block(Warrior atk,Warrior def){
         if (def.offHand.axeCount >= 3){
             def.offHand.destroyed = true;
@@ -99,17 +131,17 @@ public class Warrior {
                 def.offHand.block += 1;
             }
             else{
-                def.hitPoints -= atk.weapon.damage;
-                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-                System.out.println("il lui reste " + def.hitPoints + " pdv");
-                def.offHand.block += 1;
+                    def.hitPoints -= (atk.weapon.damage - def.def);
+                    System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+                    System.out.println("il lui reste " + def.hitPoints + " pdv");
+                    def.offHand.block += 1;
             }
         }
         else{
-            def.hitPoints -= atk.weapon.damage;
-            System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-            System.out.println("il lui reste " + def.hitPoints + " pdv");
-            def.offHand.block += 1;
+                def.hitPoints -= (atk.weapon.damage - def.def);
+                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+                System.out.println("il lui reste " + def.hitPoints + " pdv");
+                def.offHand.block += 1;
         }
     }
 }

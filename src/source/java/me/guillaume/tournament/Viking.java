@@ -5,8 +5,8 @@ public class Viking extends Warrior{
     public Viking(){
         this.name = "Viking";
         this.hitPoints = 120;
+        this.def = 0;
         super.equip("axe");
-
     }
 
     public Viking(String str){
