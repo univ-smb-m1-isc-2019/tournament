@@ -10,10 +10,12 @@ public class Swordsman extends Fighter {
     // CONSTRUCTEUR
     public Swordsman(){
         this.HP = 100;
+        this.weapon = new Weapon("sword",5,1);
 
     }
     public Swordsman(String str){
         this.HP = 100;
+        this.weapon = new Weapon("sword",5,1);
     }
 
     public Swordsman equip(String buckler) {
@@ -22,18 +24,7 @@ public class Swordsman extends Fighter {
     }
 
 
-    public void engage(Viking viking) {
-
-        while(!this.isDead() && !viking.isDead()){
-            this.HP = this.HP - 6;
-            viking.HP = viking.HP - 5;
-        }
 
 
-
-    }
-
-    public void engage(Highlander highlander) {
-    }
 
 }

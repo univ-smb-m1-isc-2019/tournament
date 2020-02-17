@@ -9,6 +9,7 @@ public class Viking extends Fighter {
     // CONSTRUCTEUR
     public Viking(){
         this.HP = 120;
+        this.weapon = new Weapon("axe",6,1);
     }
 
     public Viking equip(String buckler) {
