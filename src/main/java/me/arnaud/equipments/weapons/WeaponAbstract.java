@@ -13,4 +13,7 @@ public abstract class WeaponAbstract {
     public boolean canDmg(){
         return this.canDmg;
     }
+    public void setDmg(int nb){
+        this.dmg += nb;
+    }
 }

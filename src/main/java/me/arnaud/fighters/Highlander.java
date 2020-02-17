@@ -14,6 +14,8 @@ public class Highlander extends FighterAbstract {
             this.buckler = new Buckler();
         }else if(equipment.equals("armor")){
             this.armor = new Armor();
+            this.weapon.setDmg(-1);
+            this.dmgReduction += 3;
         }
         return this;
     }
