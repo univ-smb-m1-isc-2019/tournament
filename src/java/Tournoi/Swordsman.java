@@ -26,6 +26,8 @@ public class Swordsman extends Combattant{
         return (Swordsman) super.equip(buckler);
     }
 
-
+    public Swordsman unequip(String buckler) {
+        return (Swordsman) super.unequip(buckler);
+    }
 
 }

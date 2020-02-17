@@ -1,12 +1,24 @@
 package Tournoi;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Combattant {
 
-
+    private ArrayList<String> equipements = new ArrayList<String>();
     private int pLife;
     private Arme arme;
     private String spec;
 
+
+
+    public ArrayList<String> getEquipements() {
+        return equipements;
+    }
+
+    public void setEquipements(ArrayList<String> equipements) {
+        this.equipements = equipements;
+    }
 
     public Arme getArme() {
         return arme;
@@ -37,21 +49,41 @@ public class Combattant {
 
     public void combat(Combattant Comb)
     {
+        int cpt = 0;
+        int coup = 0;
         while (this.pLife > 0 && Comb.pLife > 0)
         {
             System.out.println("A :"+this.pLife +" HP "+ " B :" + Comb.pLife + " HP");
 
-            Comb.setpLife(Comb.pLife-this.arme.getDamage());
+            if(Comb.isEquipé("buckler") && cpt%2 != 0){
+                Comb.setpLife(Comb.pLife-this.arme.getDamage());
+            }else if(Comb.isEquipé("buckler") && cpt%2 == 0){
+
+            }else{
+                Comb.setpLife(Comb.pLife-this.arme.getDamage());
+            }
+
 
 
             if( Comb.pLife > 0 )
             {
-                this.setpLife(this.pLife-Comb.arme.getDamage());
-            }
+               if( this.isEquipé("buckler") && cpt%2 != 0 && coup < 3  )
+               {
+                   this.setpLife(this.pLife-Comb.arme.getDamage());
+
+               }else if(this.isEquipé("buckler") && cpt%2 == 0 && coup < 3){
+                   coup++;
+
+               }else if(this.isEquipé("buckler") && cpt%2 != 0 && coup == 3){
+                   this.unequip("buckler");
+               }else{
+                   this.setpLife(this.pLife-Comb.arme.getDamage());
+               }
 
         }
+            cpt++;
 
-
+        }
 
         if(this.pLife <=  0)
         {
@@ -76,6 +108,34 @@ public class Combattant {
 
 
     public Combattant equip(String buckler) {
+        this.equipements.add(buckler);
         return this;
     }
+
+    public String get_an_equip(String eq){
+
+        for (int counter = 0; counter < equipements.size(); counter++) {
+            if( this.equipements.get(counter).equals(eq) ){
+                return eq;
+            }
+        }
+        return "Cet equipement n'est pas dans l'inventaire";
+    }
+
+    public boolean isEquipé(String eq){
+
+        boolean b = false;
+
+        for (int counter = 0; counter < equipements.size(); counter++) {
+            b = this.equipements.get(counter).equals(eq) ;
+
+            }
+        return b;
+    }
+    public Combattant unequip(String buckler) {
+        this.equipements.remove(buckler);
+        return this;
+    }
+
+
 }
