@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public abstract class FighterAbstract {
     private WeaponAbstract weapon;
     protected Buckler buckler = null;
+    protected Armor armor = null;
     private int hit_points;
     private boolean canAtq;
     FighterAbstract(WeaponAbstract weapon, int hit_points){

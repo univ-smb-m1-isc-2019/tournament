@@ -13,6 +13,8 @@ public class Swordsman extends FighterAbstract {
     public Swordsman equip(String equipment){
         if (equipment.equals("buckler")){
             this.buckler = new Buckler();
+        }else if(equipment.equals("armor")){
+            this.armor = new Armor();
         }
         return this;
     }
