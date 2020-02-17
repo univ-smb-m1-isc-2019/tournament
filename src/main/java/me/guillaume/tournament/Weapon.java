@@ -1,6 +1,6 @@
 package me.guillaume.tournament;
 
-public class Weapon {
+public class Weapon extends Equipment{
 
     private int power;
     private int handlingType;
