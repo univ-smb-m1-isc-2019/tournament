@@ -2,13 +2,28 @@ package Tournoi;
 
 public class Swordsman extends Combattant{
 
+    private static Arme épée = new Arme("épéé",5);
+
     public Swordsman(){
-       super(120,5);
+       super(100, Swordsman.épée);
 
     }
 
-    public void engage(Combattant cbt){
+    public Swordsman(String vicious) {
+        super(150,vicious);
+    }
 
+    public void engage(Combattant Comb){
+        super.combat(Comb);
+    }
+
+
+    public int hitPoints(){
+        return super.getpLife();
+    }
+
+    public Swordsman equip(String buckler) {
+        return (Swordsman) super.equip(buckler);
     }
 
 
