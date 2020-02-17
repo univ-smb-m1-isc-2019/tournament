@@ -2,6 +2,7 @@ package me.guillaume.tournament;
 
 public class Highlander extends Fighter {
     int hitPoints = super.hitPoints + 50;
+    int damagePoints = super.damagePoints + 7;
 
     public Highlander() {
     }

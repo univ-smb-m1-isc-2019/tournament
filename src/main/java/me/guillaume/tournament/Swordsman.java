@@ -2,6 +2,7 @@ package me.guillaume.tournament;
 
 public class Swordsman extends Fighter {
     int hitPoints = super.hitPoints;
+    int damagePoints = super.damagePoints;
 
     public Swordsman() {
     }
