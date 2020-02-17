@@ -10,9 +10,5 @@ public class Swordsman extends FighterAbstract {
 
     }
 
-    public void engage(Viking viking) {
-    }
 
-    public int hitPoints() {
-    }
 }

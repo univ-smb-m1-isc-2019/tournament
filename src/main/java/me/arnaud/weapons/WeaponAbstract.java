@@ -5,4 +5,7 @@ public abstract class WeaponAbstract {
     public WeaponAbstract(int dmg){
         this.dmg = dmg;
     }
+    public int dmg(){
+        return this.dmg;
+    }
 }

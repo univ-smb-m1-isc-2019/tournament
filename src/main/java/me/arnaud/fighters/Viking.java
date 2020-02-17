@@ -9,7 +9,5 @@ public class Viking extends FighterAbstract {
         super(new OneHandAxe(), 120);
     }
 
-    public int hitPoints() {
 
-    }
 }
