@@ -1,7 +1,10 @@
 package me.guillaume.tournament;
 
-public class Weapon extends Portable {
+public abstract class Weapon extends Portable {
+    protected int dmg;
+
     public Weapon(Fighter owner) {
         super(owner);
+        owner.setDmg(dmg);
     }
 }

@@ -13,6 +13,10 @@ public abstract class Fighter {
     public Fighter(String state) {
     }
 
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+
     public int hitPoints() {
         return hp;
     }
