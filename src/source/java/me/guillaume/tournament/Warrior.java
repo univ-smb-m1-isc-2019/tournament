@@ -4,12 +4,15 @@ public class Warrior {
     public String name;
     public int hitPoints;
     public Weapon weapon;
-    public Weapon offHand;
+    public OffHand offHand;
     public boolean fini = false;
 
     public void engage(Warrior warrior){
         System.out.println("le combat commence");
         while (!fini){
+            if (HaveOffHand(this)){
+
+            }
             Attack(this,warrior);
             Attack(warrior,this);
         }
@@ -17,6 +20,7 @@ public class Warrior {
         RegenerateHP(this);
     }
     public Warrior equip(String stuff){
+        OffHand offHand;
         Weapon weapon;
         switch(stuff) {
             case "sword":
@@ -28,8 +32,8 @@ public class Warrior {
                 this.weapon = weapon;
                 break;
             case "buckler":
-                weapon = new Weapon("buckler",true);
-                this.offHand = weapon;
+                offHand = new OffHand("buckler");
+                this.offHand = offHand;
                 break;
             default:
                 System.out.println("erreur item non reconnue");
@@ -39,9 +43,14 @@ public class Warrior {
 
     private void Attack(Warrior atk, Warrior def){
         if(IsAlive(def) && IsAlive(atk)){
-            def.hitPoints -= atk.weapon.damage;
-            System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-            System.out.println("il lui reste " + def.hitPoints + " pdv");
+            if (HaveOffHand(def)){
+                Block(atk,def);
+            }
+            else {
+                def.hitPoints -= atk.weapon.damage;
+                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+                System.out.println("il lui reste " + def.hitPoints + " pdv");
+                }
         }
         else{
             if (IsAlive(def)){
@@ -66,12 +75,41 @@ public class Warrior {
             warrior.hitPoints = 0;
     }
 
-    private boolean HaveShield(Warrior warrior){
-        if (warrior.offHand.isShield)
+    private boolean HaveOffHand(Warrior warrior){
+        if (warrior.offHand != null)
             return true;
         else
             return false;
     }
 
+    private void Block(Warrior atk,Warrior def){
+        if (def.offHand.axeCount >= 3){
+            def.offHand.destroyed = true;
 
+        }
+        if (def.offHand.destroyed == true){
+            System.out.println("le bouclier de "+ def.name + " a été détruit");
+        }
+        if (!def.offHand.destroyed){
+            if (def.offHand.block %2 == 0){
+                if (atk.weapon.name.equals("axe")){
+                    def.offHand.axeCount += 1;
+                }
+                System.out.println(def.name + " a bloquer le coup avec son bouclier");
+                def.offHand.block += 1;
+            }
+            else{
+                def.hitPoints -= atk.weapon.damage;
+                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+                System.out.println("il lui reste " + def.hitPoints + " pdv");
+                def.offHand.block += 1;
+            }
+        }
+        else{
+            def.hitPoints -= atk.weapon.damage;
+            System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
+            System.out.println("il lui reste " + def.hitPoints + " pdv");
+            def.offHand.block += 1;
+        }
+    }
 }
