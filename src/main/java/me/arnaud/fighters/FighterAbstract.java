@@ -30,7 +30,15 @@ public abstract class FighterAbstract {
         return hit_points > 0;
     }
     private void receiveDmg(WeaponAbstract weapon){
-        if (this.buckler == null || this.buckler.destroyed()){
+        if (this.buckler != null){
+            getDmgWithBuckler(weapon);
+        }else {
+            this.hit_points -= weapon.dmg();
+            this.hit_points = Math.max(this.hit_points, 0);
+        }
+    }
+    private void getDmgWithBuckler(WeaponAbstract weapon){
+        if (this.buckler.destroyed()){
             this.hit_points -= weapon.dmg();
             this.hit_points = Math.max(this.hit_points, 0);
         }else if(this.buckler.canBlock()){
