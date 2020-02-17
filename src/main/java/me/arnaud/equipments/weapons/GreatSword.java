@@ -1,22 +1,20 @@
 package me.arnaud.equipments.weapons;
 
 public class GreatSword extends WeaponAbstract {
-    private boolean canAtq;
     private int atqCount;
     public GreatSword() {
         super(12);
-        this.canAtq = true;
         this.atqCount = 0;
     }
 
-    private void atq(){
-        this.atqCount++;
+    public void atq(){
         if (this.atqCount == 2){
-            this.canAtq = false;
+            this.canDmg = false;
+        }else if (this.atqCount == 3){
+            this.canDmg = true;
             this.atqCount = 0;
         }
+        this.atqCount++;
     }
-    public boolean canAtq(){
-        return this.canAtq;
-    }
+
 }

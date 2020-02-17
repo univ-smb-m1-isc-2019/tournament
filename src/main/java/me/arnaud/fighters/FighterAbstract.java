@@ -18,7 +18,10 @@ public abstract class FighterAbstract {
 
     public void engage(FighterAbstract opponent) {
         if (opponent.isAlive()){
-            opponent.receiveDmg(this.weapon);
+            this.weapon.atq();
+            if (this.weapon.canDmg()){
+                opponent.receiveDmg(this.weapon);
+            }
             if (opponent.canEngage())
                 opponent.engage(this);
         }
