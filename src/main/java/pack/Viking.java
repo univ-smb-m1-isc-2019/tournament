@@ -8,4 +8,8 @@ public class Viking extends Warrior{
         super(HEALTH_POINTS_BEGIN,DEFAULT_DAMAGE_WEAPON);
     }
 
+    public Viking equip ( String stuff ){
+        return new Viking();
+    }
+
 }

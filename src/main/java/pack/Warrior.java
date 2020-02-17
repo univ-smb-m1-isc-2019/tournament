@@ -29,6 +29,9 @@ public abstract class Warrior{
     //Quand on est frappé. Retire aux pv, les damages passés en parametre
     public void getHit(int damage){
         this.hp = this.hp - damage;
+        if ( this.hp < 0){
+            this.hp = 0;
+        }
     }
 
 }
