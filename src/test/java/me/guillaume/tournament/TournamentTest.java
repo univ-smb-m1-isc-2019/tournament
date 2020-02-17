@@ -22,7 +22,6 @@ public class TournamentTest {
      */
     @Test
     public void SwordsmanVsViking() {
-
         Swordsman swordsman = new Swordsman();
 
         Viking viking = new Viking();
