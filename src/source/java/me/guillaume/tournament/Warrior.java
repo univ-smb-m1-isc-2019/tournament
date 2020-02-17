@@ -1,9 +1,9 @@
 package me.guillaume.tournament;
 
 public class Warrior {
-    public boolean alreadyChecked = false;
+
     public String name;
-    public int def;
+    public int defencePoints;
     public int hitPoints;
     public Weapon weapon;
     public OffHand offHand;
@@ -13,15 +13,13 @@ public class Warrior {
 
     public void engage(Warrior warrior){
         System.out.println("le combat commence");
+        if (HaveArmor(this)){
+            UpdateStats(this);
+        }
+        if (HaveArmor(warrior)){
+            UpdateStats(warrior);
+        }
         while (!fini){
-            if (HaveArmor(this) && !this.alreadyChecked){
-                UpdateStats(this);
-                this.alreadyChecked = true;
-            }
-            if (HaveArmor(warrior) && !warrior.alreadyChecked){
-                warrior.alreadyChecked = true;
-                UpdateStats(warrior);
-            }
             Attack(this,warrior);
             Attack(warrior,this);
         }
@@ -42,8 +40,8 @@ public class Warrior {
                 this.weapon = weapon;
                 break;
             case "great sword":
-                //weapon = new Weapon("great sword",12, 0);
-                //this.weapon = weapon;
+                weapon = new Weapon("great sword",12);
+                this.weapon = weapon;
                 break;
             case "buckler":
                 offHand = new OffHand("buckler");
@@ -65,10 +63,7 @@ public class Warrior {
                 Block(atk,def);
             }
             else {
-                    def.hitPoints -= (atk.weapon.damage - def.def);
-                    System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-                    System.out.println("il lui reste " + def.hitPoints + " pdv");
-
+                    Damage(atk, def);
             }
         }
         else{
@@ -107,17 +102,44 @@ public class Warrior {
         else
             return false;
     }
+    private boolean UpdateGreatSword(Warrior atk){
+            if (atk.weapon.greatSwordCount >=2){
+                System.out.println(atk.name + " doit se reposer avant d'attaquer");
+                atk.weapon.greatSwordCount = 0;
+                return true;
+            }else{
+                atk.weapon.greatSwordCount += 1;
+                return false;
+            }
+    }
 
 
     private void UpdateStats(Warrior warrior){
-        warrior.def = 3;
+        warrior.defencePoints = 3;
         warrior.weapon.damage -= 1;
+    }
+
+    private void Damage(Warrior atk, Warrior def){
+        if (atk.weapon.isGreatSword){
+            if (UpdateGreatSword(atk)){
+                System.out.println(atk.name + " doit se reposer avant d'attaquer");
+            }
+            else{
+                def.hitPoints -= (atk.weapon.damage - def.defencePoints);
+                System.out.println(def.name + " perd " + (atk.weapon.damage - def.defencePoints) +  " pdv" );
+                System.out.println("il lui reste " + def.hitPoints + " pdv");
+            }
+        }
+        else{
+            def.hitPoints -= (atk.weapon.damage - def.defencePoints);
+            System.out.println(def.name + " perd " + (atk.weapon.damage - def.defencePoints) +  " pdv" );
+            System.out.println("il lui reste " + def.hitPoints + " pdv");
+        }
     }
 
     private void Block(Warrior atk,Warrior def){
         if (def.offHand.axeCount >= 3){
             def.offHand.destroyed = true;
-
         }
         if (def.offHand.destroyed == true){
             System.out.println("le bouclier de "+ def.name + " a été détruit");
@@ -127,20 +149,27 @@ public class Warrior {
                 if (atk.weapon.name.equals("axe")){
                     def.offHand.axeCount += 1;
                 }
-                System.out.println(def.name + " a bloquer le coup avec son bouclier");
-                def.offHand.block += 1;
+                if (atk.weapon.isGreatSword){
+                    if (UpdateGreatSword(atk)){
+                        System.out.println(atk.name + " doit se reposer avant d'attaquer");
+                    }
+                    else{
+                        System.out.println(def.name + " a bloquer le coup avec son bouclier");
+                        def.offHand.block += 1;
+                    }
+                }else{
+                    System.out.println(def.name + " a bloquer le coup avec son bouclier");
+                    def.offHand.block += 1;
+                }
             }
             else{
-                    def.hitPoints -= (atk.weapon.damage - def.def);
-                    System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-                    System.out.println("il lui reste " + def.hitPoints + " pdv");
+
+                    Damage(atk, def);
                     def.offHand.block += 1;
             }
         }
         else{
-                def.hitPoints -= (atk.weapon.damage - def.def);
-                System.out.println(def.name + " perd " + atk.weapon.damage +  " pdv" );
-                System.out.println("il lui reste " + def.hitPoints + " pdv");
+               Damage(atk, def);
                 def.offHand.block += 1;
         }
     }

@@ -7,7 +7,7 @@ public class Highlander extends Warrior {
         this.name = "Highlander";
         this.hitPoints = 150;
         super.equip("great sword");
-        this.def = 0;
+        this.defencePoints = 0;
     }
 
 
