@@ -1,10 +1,13 @@
 package me.arnaud.fighters;
 
+import me.arnaud.weapons.OneHandSword;
 import me.arnaud.weapons.WeaponAbstract;
 
 public class Swordsman extends FighterAbstract {
-    public Swordsman(WeaponAbstract weapon) {
-        super(weapon);
+
+    public Swordsman() {
+        super(new OneHandSword(), 100);
+
     }
 
     public void engage(Viking viking) {
