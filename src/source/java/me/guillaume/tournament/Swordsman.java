@@ -4,6 +4,7 @@ public class Swordsman extends Warrior{
 
 
     public Swordsman(){
+        this.name = "Swordsman";
         this.hitPoints = 100;
         this.weapon = new Weapon("sword",5);
     }
@@ -12,9 +13,7 @@ public class Swordsman extends Warrior{
 
     }
 
-    public void engage(Warrior warrior){
-        System.out.println("sa compile");
-    }
+
 
     public int hitPoints(){
         return this.hitPoints;

@@ -3,6 +3,7 @@ package me.guillaume.tournament;
 public class Viking extends Warrior{
 
     public Viking(){
+        this.name = "Viking";
         this.hitPoints = 120;
         this.weapon = new Weapon("axe",6);
 
@@ -12,9 +13,7 @@ public class Viking extends Warrior{
 
     }
 
-    public void engage(Warrior warrior){
-        System.out.println("sa compile");
-    }
+
 
     public int hitPoints(){
         return this.hitPoints;
