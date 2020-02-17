@@ -3,9 +3,9 @@ package tournament;
 public abstract class Fighter {
 
     private int hitPoints;
-
     private int handFree;
     private Buckler buckler;
+    private Armor armor;
 
 
 
@@ -15,6 +15,7 @@ public abstract class Fighter {
     {
         setHitPoints(hitPoints);
         setBuckler(null);
+        setArmor(null);
         setDefaultWeapon(new Weapon(weapon));
     }
 
@@ -140,6 +141,19 @@ public abstract class Fighter {
 
     public Weapon getDefaultWeapon() {
         return defaultWeapon;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public boolean hasArmor()
+    {
+        return getArmor() != null;
     }
 
 
