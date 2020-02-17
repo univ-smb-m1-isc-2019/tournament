@@ -5,12 +5,17 @@ import java.util.ArrayList;
 public abstract class Fighter {
     protected int hp;
     protected int dmg;
-    protected ArrayList<Portable> arms = new ArrayList<>();
+    protected Weapon weapon;
 
     public Fighter() {
     }
 
     public Fighter(String state) {
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        setDmg(weapon.getDmg());
     }
 
     public int getDmg() {

@@ -3,10 +3,7 @@ package me.guillaume.tournament;
 public class Viking extends Fighter {
     public Viking() {
         setHp(120);
-
-        OneHandAxe ohax = new OneHandAxe();
-        arms.add(ohax);
-        setDmg(ohax.getDmg());
+        setWeapon(new OneHandAxe());
     }
 
     public Viking(String state) {
