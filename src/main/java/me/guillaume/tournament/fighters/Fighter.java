@@ -4,6 +4,9 @@ import me.guillaume.tournament.fighters.bucklers.Buckler;
 import me.guillaume.tournament.fighters.weapons.TwoHandWeapon;
 import me.guillaume.tournament.fighters.weapons.Weapon;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public abstract class Fighter {
     protected int hp;
     protected int dmg;
@@ -62,7 +65,7 @@ public abstract class Fighter {
     }
 
     public void engage(Fighter other) {
-        new Fight(this, other);
+        new Fight(new ArrayList<>(Arrays.asList(this, other)));
     }
 
     public void hit(Fighter other) {

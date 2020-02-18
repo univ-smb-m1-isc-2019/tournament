@@ -1,20 +1,37 @@
 package me.guillaume.tournament.fighters;
 
+import java.util.ArrayList;
+
 public class Fight {
-    public Fight(Fighter fighter1, Fighter fighter2) {
-        startFight(fighter1, fighter2);
+    private ArrayList<Fighter> fighters;
+    private int turn = 0;
+
+    public Fight(ArrayList<Fighter> fighters) {
+        this.fighters = fighters;
+        startFight();
     }
 
-    private void startFight(Fighter f1, Fighter f2) {
-        int turn = 0;
+    private void startFight() {
+        Fighter actual;
 
-        while (f1.hitPoints() > 0 && f2.hitPoints() > 0) {
-            if (turn == 0) {
-                f1.hit(f2);
-            } else {
-                f2.hit(f1);
-            }
-            turn = (turn + 1) % 2;
+        while (!oneFighterIsKilled()) {
+            actual = getActualFighter();
+            actual.hit(getNextFighter());
+            turn++;
         }
+    }
+
+    private boolean oneFighterIsKilled() {
+        for(Fighter fighter : this.fighters)
+            if(fighter.hitPoints() <= 0) return true;
+        return false;
+    }
+
+    private Fighter getActualFighter() {
+        return fighters.get(turn % fighters.size());
+    }
+
+    private Fighter getNextFighter() {
+        return fighters.get((turn + 1) % fighters.size());
     }
 }
