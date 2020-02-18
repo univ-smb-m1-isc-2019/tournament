@@ -1,11 +1,10 @@
 package me.guillaume.tournament;
 
-import java.util.ArrayList;
-
 public abstract class Fighter {
     protected int hp;
     protected int dmg;
     protected Weapon weapon;
+    protected Buckler buckler;
 
     public Fighter() {
     }
@@ -16,6 +15,18 @@ public abstract class Fighter {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
         setDmg(weapon.getDmg());
+    }
+
+    public Weapon getWeapon() {
+        return this.weapon;
+    }
+
+    public boolean hasBuckler() {
+        return this.buckler != null;
+    }
+
+    public void throwUselessBuckler() {
+        this.buckler = null;
     }
 
     public int getDmg() {
@@ -35,6 +46,10 @@ public abstract class Fighter {
     }
 
     public Fighter equip(String portable) {
+        if(portable.equals("buckler")) {
+            this.buckler = new Buckler();
+            if(this.weapon instanceof TwoHandWeapon) this.weapon = null;
+        }
         return this;
     }
 
@@ -47,6 +62,11 @@ public abstract class Fighter {
     }
 
     protected void getHitBy(Fighter other) {
-        setHp(Math.max(0, hitPoints() - other.getDmg()));
+        int dmgToBeGiven = other.getDmg();
+        if(hasBuckler()) {
+            dmgToBeGiven = this.buckler.protectAgainst(other);
+            if(this.buckler.hasToBeDestroy()) throwUselessBuckler();
+        }
+        setHp(Math.max(0, hitPoints() - dmgToBeGiven));
     }
 }
