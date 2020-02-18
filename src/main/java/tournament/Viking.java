@@ -5,6 +5,8 @@ public class Viking extends Fighter {
     private static int LIFE = 120;
     private static String DEFAULTWEAPON = "axe";
 
+
+
     public Viking()
     {
         super(LIFE,DEFAULTWEAPON);
@@ -13,6 +15,11 @@ public class Viking extends Fighter {
 
     public int hitPoints() {
         return super.hitPoints();
+    }
+
+    @Override
+    public int addBehaviourDamages() {
+        return 0;
     }
 
     public Viking equip(String equipement) {

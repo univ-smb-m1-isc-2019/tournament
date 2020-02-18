@@ -20,9 +20,8 @@ public abstract class Fighter {
         setArmor(null);
         setDefaultWeapon(new Weapon(weapon));
         setHitGiven(0);
+        setBehaviour("none");
     }
-
-
 
     public Fighter(int hitPoints,String weapon,String behaviour)
     {
@@ -49,7 +48,7 @@ public abstract class Fighter {
 
     private void isAttackedBy(Fighter fighter)
     {
-
+        
         int nextLife;
         if(!fighter.getDefaultWeapon().hasMaxHit() ||
                 (fighter.getDefaultWeapon().hasMaxHit() && fighter.getHitGiven() != fighter.getDefaultWeapon().getMaxHit())) {
@@ -65,7 +64,13 @@ public abstract class Fighter {
                  * aux degats de l'arme de l'attanquant moins la reduction de degats cause par l'armure qu'il peut porter
                  * moins les degats que l'armure que le receveur peut porter, si aucun des deux ne portent d'armure, l'amre fait des degats normaux*/
 
-                nextLife = getHitPoints() - (fighter.getDefaultWeapon().getDamage() - fighter.getArmorReducingDamage() - getArmorReducingShock());
+                nextLife = getHitPoints() - (fighter.getDefaultWeapon().getDamage()
+                                            + fighter.addBehaviourDamages()
+                                            - fighter.getArmorReducingDamage()
+                                            - getArmorReducingShock());
+
+
+
                 fighter.setHitGiven(getHitGiven() + 1);
             }
             if(hasBuckler() && getBuckler().getDurability()>0)
@@ -78,9 +83,6 @@ public abstract class Fighter {
             nextLife = this.getHitPoints();
             fighter.setHitGiven(0);
         }
-
-
-
 
         setHitPoints(Math.max(nextLife, 0));
 
@@ -110,6 +112,7 @@ public abstract class Fighter {
         }
     }
 
+    public abstract int addBehaviourDamages();
 
 
     public Fighter equip(String equipement)
