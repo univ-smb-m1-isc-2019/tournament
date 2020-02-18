@@ -1,5 +1,7 @@
 package me.guillaume.tournament.fighters;
 
+import me.guillaume.tournament.fighters.weapons.TwoHandWeapon;
+
 import java.util.ArrayList;
 
 public class Fight {
@@ -16,7 +18,7 @@ public class Fight {
 
         while (!oneFighterIsKilled()) {
             actual = getActualFighter();
-            actual.hit(getNextFighter());
+            if(actual.canHit()) actual.hit(getNextFighter());
             turn++;
         }
     }

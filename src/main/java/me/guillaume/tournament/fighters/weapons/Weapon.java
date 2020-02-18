@@ -16,4 +16,12 @@ public abstract class Weapon extends Portable {
     public int getDmg() {
         return dmg;
     }
+
+    public boolean canGiveABlow() {
+        return true;
+    }
+
+    public void giveABlow() {
+
+    }
 }

@@ -68,7 +68,12 @@ public abstract class Fighter {
         new Fight(new ArrayList<>(Arrays.asList(this, other)));
     }
 
+    public boolean canHit() {
+        return this.weapon.canGiveABlow();
+    }
+
     public void hit(Fighter other) {
+        this.weapon.giveABlow();
         other.getHitBy(this);
     }
 
