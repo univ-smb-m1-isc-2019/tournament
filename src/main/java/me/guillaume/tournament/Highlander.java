@@ -1,15 +1,18 @@
 package me.guillaume.tournament;
 
 public class Highlander extends Fighter {
-    int hitPoints = super.hitPoints + 50;
-    int damagePoints = super.damagePoints + 7;
+    private static final int HIT_POINTS = 150;
+    private static final int DAMAGE_POINTS = 11;
+    private static final int ARMOR_POINTS = 3;
+    private static final int BUCKLER_POINTS = 0;
+    private static final boolean AXE = false;
 
     public Highlander() {
-        super.hitPoints += 50;
-        super.damagePoints += 7;
+        super(HIT_POINTS, DAMAGE_POINTS, ARMOR_POINTS, BUCKLER_POINTS, AXE);
     }
 
     public Highlander(String type) {
+        super(HIT_POINTS, DAMAGE_POINTS, ARMOR_POINTS, BUCKLER_POINTS, AXE);
     }
 
     int hitPoints(){
