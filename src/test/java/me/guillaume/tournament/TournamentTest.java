@@ -1,5 +1,8 @@
 package me.guillaume.tournament;
 
+import me.guillaume.tournament.fighters.Highlander;
+import me.guillaume.tournament.fighters.Swordsman;
+import me.guillaume.tournament.fighters.Viking;
 import org.junit.Ignore;
 import org.junit.Test;
 

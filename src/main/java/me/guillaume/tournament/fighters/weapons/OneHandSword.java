@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters.weapons;
 
 public class OneHandSword extends OneHandWeapon {
     public OneHandSword() {

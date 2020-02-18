@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters;
 
 public class Highlander extends Fighter {
     public Highlander() {

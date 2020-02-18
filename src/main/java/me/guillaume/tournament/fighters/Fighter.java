@@ -1,4 +1,8 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters;
+
+import me.guillaume.tournament.fighters.bucklers.Buckler;
+import me.guillaume.tournament.fighters.weapons.TwoHandWeapon;
+import me.guillaume.tournament.fighters.weapons.Weapon;
 
 public abstract class Fighter {
     protected int hp;

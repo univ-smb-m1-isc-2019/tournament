@@ -1,4 +1,6 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters;
+
+import me.guillaume.tournament.fighters.weapons.OneHandSword;
 
 public class Swordsman extends Fighter {
     public Swordsman() {

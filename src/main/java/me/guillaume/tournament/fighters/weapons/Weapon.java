@@ -1,4 +1,6 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters.weapons;
+
+import me.guillaume.tournament.fighters.Portable;
 
 public abstract class Weapon extends Portable {
     protected int dmg;

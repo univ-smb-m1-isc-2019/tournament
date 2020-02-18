@@ -1,4 +1,8 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.fighters.bucklers;
+
+import me.guillaume.tournament.fighters.Fighter;
+import me.guillaume.tournament.fighters.Portable;
+import me.guillaume.tournament.fighters.weapons.OneHandAxe;
 
 public class Buckler extends Portable {
     private boolean activeProtection = true;
