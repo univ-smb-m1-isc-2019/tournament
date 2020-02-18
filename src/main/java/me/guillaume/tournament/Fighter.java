@@ -21,6 +21,10 @@ public abstract class Fighter {
         return this.weapon;
     }
 
+    public void throwWeapon() {
+        this.weapon = null;
+    }
+
     public boolean hasBuckler() {
         return this.buckler != null;
     }
@@ -48,7 +52,7 @@ public abstract class Fighter {
     public Fighter equip(String portable) {
         if(portable.equals("buckler")) {
             this.buckler = new Buckler();
-            if(this.weapon instanceof TwoHandWeapon) this.weapon = null;
+            if(this.weapon instanceof TwoHandWeapon) throwWeapon();
         }
         return this;
     }
