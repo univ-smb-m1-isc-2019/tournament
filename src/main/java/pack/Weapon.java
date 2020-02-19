@@ -5,7 +5,7 @@ public class Weapon {
     public int consecutiveShotsMade;
     private static int weaponKind ; // 1 pour arme à une main, 2 pour arme à deux mains
     private int damage;
-    private int damageToShields; //Au cas ou l'on ai plus d'armes, dont certaines faisant plus d'un degat aux boucliers
+    private int damageToShields; //Au cas ou l'on ai plus d'armes, dont certaines faisant plus d'un degat aux Bucklers
 
 
     public Weapon (String name ){
