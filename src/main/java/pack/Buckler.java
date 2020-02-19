@@ -20,11 +20,10 @@ public class Buckler {
         return this.durability;
     }
 
-    private void decreaseDurability(int damage){
+    public void decreaseDurability(int damage){
         if(this.durability > 0){
             this.durability-=damage;
         }
-        this.durability = 0;
     }
 
     public boolean estCasse(){
@@ -32,7 +31,7 @@ public class Buckler {
     }
 
     public void parer(Weapon weapon){
-        decreaseDurability(weapon.getDamageToShield());
+        this.durability -= weapon.getDamageToShield();
         this.vientDeParer = true;
     }
 
