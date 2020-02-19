@@ -7,4 +7,8 @@ public class Highlander extends Warrior{
     public Highlander() {
         super(HEALTH_POINTS_BEGIN,DEFAULT_WEAPON);
     }
+
+    public Highlander(String type) {
+        super(HEALTH_POINTS_BEGIN,DEFAULT_WEAPON);
+    }
 }

@@ -1,13 +1,13 @@
 package pack;
 
-public class Bouclier {
+public class Buckler {
     private static final int DEFAULT_DURABILITY = 3 ;
     private static final boolean DEFAULT_STATE = false;
     private int durability;
     private boolean vientDeParer;
 
 
-    public Bouclier(){
+    public Buckler(){
         this.durability = DEFAULT_DURABILITY;
         this.vientDeParer = DEFAULT_STATE;
     }
@@ -20,17 +20,19 @@ public class Bouclier {
         return this.durability;
     }
 
-    public void decreaseDurability(int damage){
+    private void decreaseDurability(int damage){
         if(this.durability > 0){
             this.durability-=damage;
         }
+        this.durability = 0;
     }
 
     public boolean estCasse(){
         return this.durability <= 0;
     }
 
-    public void parer(){
+    public void parer(Weapon weapon){
+        decreaseDurability(weapon.getDamageToShield());
         this.vientDeParer = true;
     }
 
