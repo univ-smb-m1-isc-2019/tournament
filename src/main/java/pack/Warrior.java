@@ -45,37 +45,29 @@ public abstract class Warrior{
         return hp;
     }
 
-    public void engage(Warrior warrior) {
-        while(this.hp > 0 && warrior.hitPoints()>0){
-            System.out.println ("AVANT  Guerrier 1 : " +this.hp +" Guerrier 2 "+ warrior.hp);
+    public void engage(Warrior enemy) {
+        while(this.hp > 0 && enemy.hitPoints()>0){
+            System.out.println ("AVANT  Guerrier 1 : " +this.hp +" Guerrier 2 "+ enemy.hp);
             //Les deux combattants se frappent
-            getHit(warrior);
-            warrior.getHit(this);
-            System.out.println ("APRES  Guerrier 1 : " +this.hp +" Guerrier 2 "+ warrior.hp);
+            getHit(enemy);
+            enemy.getHit(this);
+            
+            System.out.println ("APRES  Guerrier 1 : " +this.hp +" Guerrier 2 "+ enemy.hp);
             System.out.println ("-------------------------------------------------------------");
         }
     }
     //Quand on est frappé par le guerrier donné en parametre, on fait ce qu'il faut pour gérer les équipements et points de vie
     public void getHit(Warrior enemy){
-        //System.out.println (enemy.weapon.consecutiveShotsMade);
-        //System.out.println (enemy.weapon.consecutiveShotsPossible);
         if ( enemy.canAttack() ){// si l'arme de l'enemi lui permet d'attaquer ce tour
-            enemy.attack(this);
-            if ( hasBuckler() ){//Si on a un Buckler
-                if ( bucklerIsBroken() ){//Si le Buckler est cassé, on prend le coup
-                    decreaseHealthPoints(enemy.getDamage()-resistance());
-                }
-                else if ( hasParryLastTurn() ){//Le Buckler a été utilisé au tour d'avant, alors on prend le coup
-                    bucklerHasNotParryThisTurn(); //On indique que le Buckler vient de passer son tour
-                    decreaseHealthPoints(enemy.getDamage()-resistance());
-                }
-                else{//Le Buckler n'est pas cassé et est utilisable a ce tour :
-                    parry(enemy.getWeapon());
-                    //buckler.decreaseDurability(enemy.weapon.getDamageToShield());
-                }
+            enemy.attack();
+            if( canParry() ){//Si on peut parer le coup
+                parry (enemy.getWeapon());//Le bouclier encaisse le coup
             }
-            else {//Sans Buckler, on prend directement le coup
-                decreaseHealthPoints(enemy.getDamage()-resistance());
+            else{//Sinon, le warrior prend le coup
+                decreaseHealthPoints(enemy.getDamage()-getResistance());
+                if ( hasBuckler() ){
+                    bucklerHasNotParryThisTurn();
+                }
             }
         }//fin if attaque
         else{
@@ -83,7 +75,18 @@ public abstract class Warrior{
         }
     }
 
-    private int resistance() {
+    //Test si en l'état actuel on peut parer un coup
+    private boolean canParry(){
+        if ( hasBuckler() ){//Si on a un bouclier
+            if ( hasParryLastTurn() || bucklerIsBroken() ){ //Si ce bouclier vient de parer ou qu'il est cassé
+                return false;//On peut pas parer
+            }
+            return true;
+        }
+        return false;//On peut pas parer sans bouclier
+    }
+
+    public int getResistance() {
         return this.resistance;
     }
 
@@ -108,10 +111,10 @@ public abstract class Warrior{
     }
 
     private boolean bucklerIsBroken() {
-        return  buckler.estCasse();
+        return buckler.estCasse();
     }
 
-    private void attack(Warrior warrior) {
+    private void attack() {
         this.weapon.attack();
     }
 
