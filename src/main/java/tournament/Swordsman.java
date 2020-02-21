@@ -15,6 +15,7 @@ public class Swordsman extends Fighter {
     }
     public Swordsman(String str){
         this.HP = 100;
+        this.name = str;
         this.weapon = new Weapon("sword",5,1);
     }
 

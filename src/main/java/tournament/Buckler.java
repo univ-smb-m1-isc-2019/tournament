@@ -13,11 +13,17 @@ public class Buckler {
 
     }
 
-    public void receiveBlow(String weapon){
-        if(weapon == "axe"){
-            this.blow -= 1;
-            if(this.blow <= 0)
-                this.destroy = true;
+    public void receiveBlow(Fighter fighterA, Fighter fighterB, boolean isBlowed){
+
+        if(isBlowed){
+            if(fighterB.weapon.getName() == "axe"){
+                this.blow -= 1;
+                if(this.blow <= 0)
+                    this.destroy = true;
+            }
+        }
+        else{
+            fighterA.removeHitPoints(fighterB);
         }
     }
 
