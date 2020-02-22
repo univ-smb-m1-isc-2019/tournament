@@ -8,11 +8,14 @@ public class Highlander extends Fighter {
 
     // CONSTRUCTEUR
     public Highlander(){
+        super();
         this.HP = 150;
         this.weapon = new Weapon("Great Sword",12,2);
     }
     public Highlander(String str){
+        super();
         this.HP = 150;
+        this.powerFighter(str);
         this.name = str;
         this.weapon = new Weapon("Great Sword",12,2);
     }

@@ -8,6 +8,7 @@ public class Viking extends Fighter {
 
     // CONSTRUCTEUR
     public Viking(){
+        super();
         this.HP = 120;
         this.weapon = new Weapon("axe",6,1);
     }
