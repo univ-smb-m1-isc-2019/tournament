@@ -3,6 +3,7 @@ package tournament;
 public class Fighter {
 
     public int hp;
+    public int baseHp;
     public int dmg;
     public String mainhand;
     public String offhand;
@@ -82,9 +83,9 @@ public class Fighter {
         int dmg = opponent.getHands().attack();
         if(opponent.veteran)
         {
-            // 30% de 150 = 45
-            if(opponent.getHp() < 45){
-                dmg = dmg *2; // berserk
+            // Il devient berserk à 30%
+            if(opponent.getHp() < (opponent.baseHp*30)/100){
+                dmg = dmg *2; // berserk = dégats *2
             }
 
         }

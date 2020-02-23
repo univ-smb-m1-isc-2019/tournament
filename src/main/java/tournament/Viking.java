@@ -5,8 +5,8 @@ public class Viking extends Fighter {
     public Viking() {
         super.hp = 120;
         super.dmg = 6;
+        super.baseHp = 120;
         super.mainhand = "Axe";
-
         super.hands = new Weapon("axe");
     }
 
