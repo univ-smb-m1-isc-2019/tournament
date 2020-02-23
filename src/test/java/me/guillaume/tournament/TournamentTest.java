@@ -83,7 +83,7 @@ public class TournamentTest {
      * once Berserk, he doubles his damages
      */
     @Test
-    @Ignore // interesting but might be a bit long...
+    //@Ignore // interesting but might be a bit long...
     public void ViciousSwordsmanVsVeteranHighlander() {
 
         Swordsman swordsman = new Swordsman("Vicious")

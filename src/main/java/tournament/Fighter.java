@@ -7,14 +7,14 @@ public class Fighter {
     public String mainhand;
     public String offhand;
     public boolean armor;
-    public int deuxFoisSurTrois;
     public int poisonTicks;
     public boolean veteran;
     public boolean vicious;
 
+    public Weapon hands;
+
     public Fighter() {
         armor = false;
-        deuxFoisSurTrois = 0;
         vicious = false;
         veteran = false;
         poisonTicks = 0;
@@ -32,55 +32,42 @@ public class Fighter {
         while( (fighter.getHp() > 0) && (this.getHp() > 0))
         {
             /** A engage B **/
-            if (this.deuxFoisSurTrois < 2){
-                if(fighter.gotShield())
-                {
-                    System.out.println("Got shield " + fighter );
-                    if(!blockedB && shieldDestroyB < 3){
+            if(fighter.gotShield())
+            {
+                if(!blockedB && shieldDestroyB < 3){
+
+                    if (this.getHands().attack() != 0)
                         blockedB = true;
-                        if(this.gotAxe()) shieldDestroyB++;
-                    }
-                    else {
-                        fighter.blow(this.dmg, this);
-                        blockedB = false;
-                    }
+                    if(this.gotAxe()) shieldDestroyB++;
+                }
+                else {
+                    fighter.blow(this);
+                    blockedB = false;
+                }
 
-                } else
-                    fighter.blow(this.dmg, this);
-
-                if(this.got2HandSword()) this.deuxFoisSurTrois++;
-            }
-            else{
-                this.deuxFoisSurTrois = 0;
-            }
+            } else
+                fighter.blow(this);
 
 
             /** B engage A **/
-            if(fighter.deuxFoisSurTrois < 2){
+            if(fighter.getHp() > 0) {
 
-                if(fighter.getHp() > 0) {
-
-                    if(this.gotShield())
+                if(this.gotShield())
+                {
+                    if(!blockedA && shieldDestroyA < 3 )
                     {
-                        System.out.println("Got shield " + this );
-                        if(!blockedA && shieldDestroyA < 3 )
-                        {
+                        if (fighter.getHands().attack() != 0)
                             blockedA = true;
-                            if(fighter.gotAxe()) shieldDestroyA++;
-                        }
-                        else {
-                            this.blow(fighter.dmg, fighter);
-                            blockedA = false;
-                        }
+                        if(fighter.gotAxe()) shieldDestroyA++;
                     }
-                    else this.blow(fighter.dmg, fighter);
+                    else {
+                        this.blow(fighter);
+                        blockedA = false;
+                    }
                 }
-
-                if(fighter.got2HandSword()) fighter.deuxFoisSurTrois++;
+                else this.blow(fighter);
             }
-                else{
-                fighter.deuxFoisSurTrois = 0;
-            }
+            // System.out.println("f1 = " + this.getHp() + " f2 = " + fighter.getHp());
         }
     }
 
@@ -90,8 +77,9 @@ public class Fighter {
     }
 
     /** Fonction qui retire un nombre de HP donné en paramètre au combattant **/
-    public void blow(int dmg, Fighter opponent)
+    public void blow(Fighter opponent)
     {
+        int dmg = opponent.getHands().attack();
         if(opponent.veteran)
         {
             // 30% de 150 = 45
@@ -114,6 +102,11 @@ public class Fighter {
         {
             dmg -= 3;
         }
+        if(opponent.armor)
+            dmg -= 1;
+
+        if(dmg < 0) dmg=0;
+
         // Si l'attaque ne le tue pas
         if(this.getHp() - dmg > 0)
             this.setHp(this.getHp() - dmg); // on lui change la vie
@@ -178,6 +171,11 @@ public class Fighter {
     /** Getters **/
     public int getHp() {
         return hp;
+    }
+
+    public Weapon getHands()
+    {
+        return hands;
     }
 
     /** Setters **/

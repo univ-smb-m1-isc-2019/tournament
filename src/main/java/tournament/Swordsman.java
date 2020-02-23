@@ -8,20 +8,24 @@ public class Swordsman extends Fighter {
         super.hp = 100;
         super.mainhand = "1 hand sword";
 
+        super.hands = new Weapon("1 hand sword");
+
     }
 
     public Swordsman(String name) {
 
+        super.hp = 100;
+
         if(name=="Vicious")
         {
             super.dmg = 6;
-            super.hp = 100;
             super.vicious = true;
+            super.hands = new Weapon("axe");
         }
         else {
             super.dmg = 5;
-            super.hp = 100;
             super.mainhand = "1 hand sword";
+            super.hands = new Weapon("1 hand sword");
         }
     }
 
