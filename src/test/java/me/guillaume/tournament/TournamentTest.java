@@ -63,7 +63,7 @@ public class TournamentTest {
     @Test
     public void ArmoredSwordsmanVsViking() {
 
-        Highlander highlander = new Highlander("Veteran");
+        Highlander highlander = new Highlander();
 
         Swordsman swordsman = new Swordsman()
                 .equip("buckler")

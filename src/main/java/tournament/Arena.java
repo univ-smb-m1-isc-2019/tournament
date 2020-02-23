@@ -4,7 +4,7 @@ public class Arena {
 
     public static void main (String[] args) {
 
-        Fighter f1 = new Swordsman().equip("buckler").equip("armor");;
+        Fighter f1 = new Swordsman("vicious").equip("buckler").equip("armor");;
         Fighter f2 = new Highlander("veteran");
         // System.out.println(" mainHandIsEmpty = " + f1.offHandIsEmpty());
         // System.out.println(f1.getMainhand() + " " + f1.getOffhand());

@@ -8,10 +8,16 @@ public class Fighter {
     public String offhand;
     public boolean armor;
     public int deuxFoisSurTrois;
+    public int poisonTicks;
+    public boolean veteran;
+    public boolean vicious;
 
     public Fighter() {
         armor = false;
         deuxFoisSurTrois = 0;
+        vicious = false;
+        veteran = false;
+        poisonTicks = 0;
     }
 
 
@@ -29,17 +35,18 @@ public class Fighter {
             if (this.deuxFoisSurTrois < 2){
                 if(fighter.gotShield())
                 {
+                    System.out.println("Got shield " + fighter );
                     if(!blockedB && shieldDestroyB < 3){
                         blockedB = true;
                         if(this.gotAxe()) shieldDestroyB++;
                     }
                     else {
-                        fighter.blow(this.dmg);
+                        fighter.blow(this.dmg, this);
                         blockedB = false;
                     }
 
                 } else
-                    fighter.blow(this.dmg);
+                    fighter.blow(this.dmg, this);
 
                 if(this.got2HandSword()) this.deuxFoisSurTrois++;
             }
@@ -47,25 +54,26 @@ public class Fighter {
                 this.deuxFoisSurTrois = 0;
             }
 
-            /** B engage A **/
 
+            /** B engage A **/
             if(fighter.deuxFoisSurTrois < 2){
 
                 if(fighter.getHp() > 0) {
 
                     if(this.gotShield())
                     {
+                        System.out.println("Got shield " + this );
                         if(!blockedA && shieldDestroyA < 3 )
                         {
                             blockedA = true;
                             if(fighter.gotAxe()) shieldDestroyA++;
                         }
                         else {
-                            this.blow(fighter.dmg);
+                            this.blow(fighter.dmg, fighter);
                             blockedA = false;
                         }
                     }
-                    else this.blow(fighter.dmg);
+                    else this.blow(fighter.dmg, fighter);
                 }
 
                 if(fighter.got2HandSword()) fighter.deuxFoisSurTrois++;
@@ -82,13 +90,30 @@ public class Fighter {
     }
 
     /** Fonction qui retire un nombre de HP donné en paramètre au combattant **/
-    public void blow(int dmg)
+    public void blow(int dmg, Fighter opponent)
     {
+        if(opponent.veteran)
+        {
+            // 30% de 150 = 45
+            if(opponent.getHp() < 45){
+                dmg = dmg *2; // berserk
+            }
+
+        }
+
+        if(opponent.vicious)
+        {
+            if(this.poisonTicks < 2)
+            {
+                dmg += 20;
+                poisonTicks++;
+            }
+        }
+
         if(this.armor)
         {
             dmg -= 3;
         }
-
         // Si l'attaque ne le tue pas
         if(this.getHp() - dmg > 0)
             this.setHp(this.getHp() - dmg); // on lui change la vie
@@ -105,7 +130,7 @@ public class Fighter {
         else{
             if(mainHandIsEmpty())
                 this.mainhand = buckler;
-            if(offHandIsEmpty())
+            else if(offHandIsEmpty())
                 this.offhand = buckler;
         }
         return this;
@@ -151,23 +176,11 @@ public class Fighter {
     }
 
     /** Getters **/
-    public int getDmg() {
-        return dmg;
-    }
     public int getHp() {
         return hp;
     }
-    public String getMainhand() {
-        return mainhand;
-    }
-    public String getOffhand() {
-        return offhand;
-    }
 
     /** Setters **/
-    public void setDmg(int dmg) {
-        this.dmg = dmg;
-    }
     public void setHp(int hp) {
         this.hp = hp;
     }
