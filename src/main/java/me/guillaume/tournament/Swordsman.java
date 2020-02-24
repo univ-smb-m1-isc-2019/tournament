@@ -18,7 +18,9 @@ public class Swordsman extends Champion {
         if (buckler.equals("buckler")) {
             this.bouclier = new Bouclier();
         }
-
+        if(buckler.equals("armor")){
+            this.armor = new Armor();
+        }
         return this;
     }
 }

@@ -5,7 +5,7 @@ public class Champion {
     protected int hp;
     protected Weapon weapon;
     protected Bouclier bouclier;
-
+    protected Armor armor;
 
 
     public void engage(Champion champ) {
