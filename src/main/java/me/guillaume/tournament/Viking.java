@@ -2,14 +2,11 @@ package me.guillaume.tournament;
 
 public class Viking extends Champion {
 
-    public Viking(String name) {
-        super(name);
-    }
 
     public Viking() {
         super.name = "Viking";
         super.hp = 120;
-        this.weapon = new Weapon("axe",6,1);
+        this.weapon = new Weapon("axe", 6);
     }
 
     public int hitPoints() {
@@ -17,7 +14,10 @@ public class Viking extends Champion {
     }
 
     public Viking equip(String buckler) {
-
+        if (buckler.equals("buckler")) {
+            this.bouclier = new Bouclier();
+        }
         return this;
     }
+
 }

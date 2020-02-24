@@ -1,15 +1,14 @@
 package me.guillaume.tournament;
 
-public class Highlander extends Champion{
+import java.nio.file.Watchable;
 
+public class Highlander extends Champion {
 
-    public Highlander(String name) {
-        super(name);
-    }
 
     public Highlander() {
         super.name = "Highlander";
         super.hp = 150;
+        this.weapon = new Weapon("GreatSword", 12);
     }
 
     public int hitPoints() {
@@ -17,7 +16,6 @@ public class Highlander extends Champion{
     }
 
     public Highlander equip(String buckler) {
-
-        return this;
+        return null;
     }
 }

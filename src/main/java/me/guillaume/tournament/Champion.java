@@ -4,34 +4,29 @@ public class Champion {
     protected String name;
     protected int hp;
     protected Weapon weapon;
+    protected Bouclier bouclier;
 
-    public Champion() {
-        this.name = "";
-    }
 
-    public Champion(String name) {
-        this.name = name;
-    }
 
     public void engage(Champion champ) {
 
-        while(this.isAlive() && champ.isAlive()){
-
-            if( this.hp - champ.weapon.getDmg()>0){
-            this.hp = this.hp - champ.weapon.getDmg();
+        while (this.isAlive() && champ.isAlive()) {
+            champ.hp = this.sendDmg(champ);
+            if (champ.hp > 0) {
+                this.hp = champ.sendDmg(this);
             }
-            else{
-                this.hp = 0;
-            }
-
-            if(champ.hp - this.weapon.getDmg() >0){
-            champ.hp = champ.hp - this.weapon.getDmg();
-            } else {
-                champ.hp = 0;
-            }
-
         }
 
+    }
+
+    public int sendDmg(Champion champion) {
+        if (champion.bouclier == null) {
+            champion.hp = champion.hp - this.weapon.dmg;
+        } else {
+            champion.hp = champion.hp - champion.bouclier.block(this.weapon);
+        }
+        if (champion.hp < 0) champion.hp = 0;
+        return champion.hp;
     }
 
     private boolean isAlive() {
@@ -39,13 +34,9 @@ public class Champion {
     }
 
 
-
     public int hitPoints() {
         return this.hp;
     }
 
-    public Champion equip(String buckler) {
 
-        return this;
-    }
 }
