@@ -5,10 +5,9 @@ import java.util.ArrayList;
 public class Swordsman extends Warrior{
 
     public Swordsman() {
-        super.healthPoints = 100;
-        super.dmg = 5;
-        super.typeWarrior = null;
-        super.equipment = new ArrayList<String>();
+        super(100, "Swordsman");
+        this.equipment = new ArrayList<>();
+        equip("sword");
     }
 
     public Swordsman(String vicious) {
@@ -16,7 +15,7 @@ public class Swordsman extends Warrior{
     }
 
     public Swordsman equip(String obj) {
-            this.equipment.add(obj);
+            this.equipment.add(createdEquipementItem(obj));
         return this;
     }
 }

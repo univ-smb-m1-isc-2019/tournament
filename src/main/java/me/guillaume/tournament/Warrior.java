@@ -2,45 +2,56 @@ package me.guillaume.tournament;
 import java.util.ArrayList;
 
 public class Warrior {
-    protected int healthPoints, dmg;
+    protected int healthPoints;
     protected String typeWarrior;
-    protected ArrayList<String> equipment;
+    protected ArrayList<Equipment> equipment;
 
     public Warrior(){}
 
-    public Warrior(String typeWarrior){
+    public Warrior(int healthPoints, String typeWarrior){
+        this.healthPoints = healthPoints;
         this.typeWarrior = typeWarrior;
     }
 
     protected void engage(Warrior mWarrior){
 
-        int comptonOffBuckler = 0;
-        int comptonOffBucklerThis = 0;
-
         while (mWarrior.healthPoints != 0 && this.healthPoints != 0){
-
-
-                if (mWarrior.healthPoints - this.dmg >= 0)
-                    mWarrior.healthPoints -= this.dmg;
-                else
-                    mWarrior.healthPoints -= mWarrior.healthPoints;
-
-                if (this.healthPoints - mWarrior.dmg >= 0)
-                    this.healthPoints -= mWarrior.dmg;
-                else
-                    this.healthPoints -= this.healthPoints;
-
-
+            attack(mWarrior, equipment.get(0).getDamage());
+            attack(this,mWarrior.equipment.get(0).getDamage());
         }
     }
 
-    private boolean haveBuckler(Warrior mWarrior){
-        return mWarrior.equipment.contains("buckler");
+    private void attack(Warrior mWarrior, int attackDmg ){
+        if (mWarrior.healthPoints - attackDmg >= 0)
+            mWarrior.healthPoints -= attackDmg;
+        else
+            mWarrior.healthPoints = 0;
     }
 
-    private void actionWarriorWithBuckler(Warrior mWarrior){
+    protected Equipment createdEquipementItem(String typeOfItem){
+        switch (typeOfItem){
+            case "buckler":
+                return new Buckler(typeOfItem);
 
+            case "armor":
+                return new Armor(typeOfItem);
+
+            case "axe":
+                return new Axe(typeOfItem);
+
+            case "sword":
+                return  new Sword(typeOfItem);
+
+            case "Great Sword":
+                return new GreatSword(typeOfItem);
+
+            default:
+                System.out.println("'createdEquipementItem()': equipment does not exist");
+        }
+
+        return null;
     }
+
 
 
     public int hitPoints() {

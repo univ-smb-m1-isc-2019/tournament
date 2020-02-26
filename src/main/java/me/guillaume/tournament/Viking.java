@@ -5,14 +5,13 @@ import java.util.ArrayList;
 public class Viking extends Warrior{
 
     public Viking(){
-        super.healthPoints = 120;
-        super.dmg = 6;
-        super.typeWarrior = null;
-        super.equipment = new ArrayList<String>();
+        super(120, "Viking");
+        this.equipment = new ArrayList<>();
+        equip("axe");
     }
 
     public Viking equip(String obj) {
-            this.equipment.add(obj);
+            this.equipment.add(createdEquipementItem(obj));
         return this;
     }
 }
