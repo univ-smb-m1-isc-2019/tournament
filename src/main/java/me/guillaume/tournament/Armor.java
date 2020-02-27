@@ -6,4 +6,6 @@ public class Armor extends Equipment {
         super(typeEquipement);
         this.equipAttack = false;
     }
+
+
 }

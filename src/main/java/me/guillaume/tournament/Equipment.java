@@ -1,6 +1,6 @@
 package me.guillaume.tournament;
 
-public class Equipment {
+public class  Equipment {
     protected String typeEquipement;
     protected boolean equipAttack;
     protected int damage;
@@ -21,4 +21,5 @@ public class Equipment {
     public int getDamage() {
         return damage;
     }
+
 }

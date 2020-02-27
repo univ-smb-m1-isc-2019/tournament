@@ -3,8 +3,13 @@ import java.util.ArrayList;
 
 public class Warrior {
     protected int healthPoints;
+
     protected String typeWarrior;
+    protected Weapon myWeapon1, myWeapon2 = null;
+    protected Buckler myBuckler = null;
+    protected Armor myArmor = null;
     protected ArrayList<Equipment> equipment;
+
 
     public Warrior(){}
 
@@ -16,17 +21,31 @@ public class Warrior {
     protected void engage(Warrior mWarrior){
 
         while (mWarrior.healthPoints != 0 && this.healthPoints != 0){
-            attack(mWarrior, equipment.get(0).getDamage());
-            attack(this,mWarrior.equipment.get(0).getDamage());
+            action(mWarrior, myWeapon1);
+            action(this,mWarrior.myWeapon1);
         }
     }
 
-    private void attack(Warrior mWarrior, int attackDmg ){
-        if (mWarrior.healthPoints - attackDmg >= 0)
-            mWarrior.healthPoints -= attackDmg;
+    private void action(Warrior mWarriorReceiver, Equipment wpAttack ){
+
+        if(mWarriorReceiver.myBuckler == null)
+            attack(mWarriorReceiver,wpAttack);
+        else{
+
+            if(!mWarriorReceiver.myBuckler.isProtectionIsActive())
+                attack(mWarriorReceiver,wpAttack);
+
+            mWarriorReceiver.myBuckler.getDmgfromAttack(wpAttack);
+        }
+    }
+
+    private void attack(Warrior mWarrior, Equipment wpAttack ){
+        if (mWarrior.healthPoints - wpAttack.getDamage() >= 0)
+            mWarrior.healthPoints -= wpAttack.getDamage();
         else
             mWarrior.healthPoints = 0;
     }
+
 
     protected Equipment createdEquipementItem(String typeOfItem){
         switch (typeOfItem){
@@ -48,8 +67,30 @@ public class Warrior {
             default:
                 System.out.println("'createdEquipementItem()': equipment does not exist");
         }
-
         return null;
+    }
+
+
+    protected void equipping(){
+        for(int i = 0; i < equipment.size(); i++)
+            setItems(equipment.get(i));
+    }
+
+    private void setItems(Equipment myItem){
+        switch (myItem.getTypeEquipement()){
+            case "buckler":
+                myBuckler = (Buckler) myItem;
+                break;
+
+            case "armor":
+                myArmor = (Armor) myItem;
+
+            default:
+                if (myWeapon1 == null)
+                    myWeapon1 = (Weapon) myItem;
+                else
+                    myWeapon2 = (Weapon) myItem;
+        }
     }
 
 

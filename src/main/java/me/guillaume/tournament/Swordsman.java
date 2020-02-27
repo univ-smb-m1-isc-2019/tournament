@@ -16,6 +16,7 @@ public class Swordsman extends Warrior{
 
     public Swordsman equip(String obj) {
             this.equipment.add(createdEquipementItem(obj));
+            equipping();
         return this;
     }
 }
