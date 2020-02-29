@@ -1,5 +1,12 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.equipement.defense;
 
+import me.guillaume.tournament.equipement.weapon.OneHandAxe;
+import me.guillaume.tournament.equipement.weapon.Weapon;
+
+/**
+ * A Buckler blocks all incoming damage of a blow one time out of two
+ * but can be broken if an axe hit it three times.
+ */
 public class Buckler extends Defense {
 
     private static final int DEFAULT_NUMBER_OF_USES = 3;
@@ -19,15 +26,19 @@ public class Buckler extends Defense {
 
     @Override
     public int defenseModifier(int damageTaken, Weapon attackerWeapon) {
-        if(numberOfUses <= 0 || !canBeUsed) {
+        if(!usable()) {
             canBeUsed = true;
             return damageTaken;
         }
 
         if(attackerWeapon instanceof OneHandAxe) numberOfUses -=1;
+
         canBeUsed = false;
         return 0;
     }
 
+    private boolean usable(){
+        return numberOfUses > 0 && canBeUsed;
+    }
 
 }

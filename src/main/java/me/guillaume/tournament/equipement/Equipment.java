@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.equipement;
 
 public abstract class Equipment {
 

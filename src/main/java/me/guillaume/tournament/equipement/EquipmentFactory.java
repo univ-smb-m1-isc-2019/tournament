@@ -1,4 +1,10 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.equipement;
+
+import me.guillaume.tournament.equipement.defense.Armor;
+import me.guillaume.tournament.equipement.defense.Buckler;
+import me.guillaume.tournament.equipement.weapon.GreatSword;
+import me.guillaume.tournament.equipement.weapon.OneHandAxe;
+import me.guillaume.tournament.equipement.weapon.OneHandSword;
 
 import java.util.HashMap;
 
@@ -6,8 +12,8 @@ public class EquipmentFactory {
 
     private HashMap<String, Equipment> equipmentInstances;
 
-    // Weapons
-    private static final String ONE_HAND_SWORD = "one_hand_sword";
+    // Weapon
+    private static final String ONE_HAND_SWORD = "sword";
     private static final String ONE_HAND_AXE = "axe";
     private static final String GREAT_SWORD = "great_sword";
 

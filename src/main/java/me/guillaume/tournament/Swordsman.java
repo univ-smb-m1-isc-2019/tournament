@@ -1,27 +1,33 @@
 package me.guillaume.tournament;
 
+import me.guillaume.tournament.equipement.defense.Defense;
+import me.guillaume.tournament.equipement.Equipment;
+import me.guillaume.tournament.equipement.EquipmentFactory;
+import me.guillaume.tournament.equipement.weapon.Weapon;
+import me.guillaume.tournament.skill.SkillFactory;
+
 public class Swordsman extends Fighter{
 
-    private static final int HIT_POINTS = 100;
-    private static final String DEFAULT_WEAPON = "one_hand_sword";
+    private static final int MAX_HIT_POINTS = 100;
+    private static final String DEFAULT_WEAPON = "sword";
 
     public Swordsman(){
-        super(HIT_POINTS);
+        super(MAX_HIT_POINTS);
         equip(DEFAULT_WEAPON);
     }
 
     public Swordsman(String skill){
-        super(HIT_POINTS);
+        super(MAX_HIT_POINTS);
         equip(DEFAULT_WEAPON);
 
         this.skill = new SkillFactory().getSkill(skill);
     }
 
     public Swordsman equip(String equipmentName){
-        Equipment e = new EquipmentFactory().getEquipment(equipmentName);
+        Equipment equipment = new EquipmentFactory().getEquipment(equipmentName);
 
-        if(e instanceof Weapon) weapon = (Weapon) e;
-        else defenseEquipment.add((Defense) e);
+        if(equipment instanceof Weapon) weapon = (Weapon) equipment;
+        else defenseEquipment.add((Defense) equipment);
 
         return this;
     }

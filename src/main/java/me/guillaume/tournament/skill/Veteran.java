@@ -1,5 +1,11 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.skill;
 
+import me.guillaume.tournament.Fighter;
+
+/**
+ * A fighter with the Veteran skill deals double damage
+ * when his health is below 30% of his max HP.
+ */
 public class Veteran extends Skill {
 
     private static final int BERSERK_HEALTH_PERCENTAGE_THRESHOLD_TRIGGER = 30;

@@ -1,4 +1,4 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.skill;
 
 import java.util.HashMap;
 
@@ -19,5 +19,4 @@ public class SkillFactory {
     public Skill getSkill(String skill){
         return skillInstances.get(skill);
     }
-
 }

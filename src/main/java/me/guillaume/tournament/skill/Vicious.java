@@ -1,4 +1,6 @@
-package me.guillaume.tournament;
+package me.guillaume.tournament.skill;
+
+import me.guillaume.tournament.Fighter;
 
 /**
  * A fighter with the vicious skill deals 20 poison
