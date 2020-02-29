@@ -10,7 +10,7 @@ public class Highlander extends Fighter{
         equip("great_sword");
     }
 
-    public Highlander(String type){
+    public Highlander(String skill){
         super(HIT_POINTS);
         equip("great_sword");
     }

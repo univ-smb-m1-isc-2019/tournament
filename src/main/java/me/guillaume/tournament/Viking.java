@@ -10,7 +10,7 @@ public class Viking extends Fighter{
         equip("one_hand_axe");
     }
 
-    public Viking(String type){
+    public Viking(String skill){
         super(HIT_POINTS);
         equip("one_hand_axe");
     }

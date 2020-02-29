@@ -5,9 +5,12 @@ import java.util.ArrayList;
 public abstract class Fighter {
 
     private int hitPoints;
+    private Skill skill;
+
     private int fatigue;
     protected Weapon weapon;
     protected ArrayList<Defense> defenseEquipment;
+
 
     public Fighter(int hitPoints){
         this.hitPoints = hitPoints;
