@@ -51,6 +51,10 @@ public abstract class Fighter {
             attackPower = equipment.damageModifier(attackPower);
         }
 
+        if(skill != null){
+            attackPower = skill.damageModifier(attackPower, this);
+        }
+
         return attackPower;
     }
 

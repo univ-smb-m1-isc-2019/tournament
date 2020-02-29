@@ -8,7 +8,7 @@ public class EquipmentFactory {
 
     // Weapons
     private static final String ONE_HAND_SWORD = "one_hand_sword";
-    private static final String ONE_HAND_AXE = "one_hand_axe";
+    private static final String ONE_HAND_AXE = "axe";
     private static final String GREAT_SWORD = "great_sword";
 
     // Defense

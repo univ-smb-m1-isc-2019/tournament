@@ -2,7 +2,7 @@ package me.guillaume.tournament;
 
 public class Swordsman extends Fighter{
 
-    private final static int HIT_POINTS = 100;
+    private static final int HIT_POINTS = 100;
     private static final String DEFAULT_WEAPON = "one_hand_sword";
 
     public Swordsman(){
