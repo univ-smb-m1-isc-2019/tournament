@@ -6,7 +6,9 @@ public class Highlander extends Fighter {
     private static final int ARMOR_POINTS = 0;
     private static final int BUCKLER_POINTS = 0;
     private static final boolean AXE = false;
-    private int greatSword = 3;
+    private int greatSwordTurns = 3;
+    private int berserkTreshold = 0;
+    private boolean berserk = false;
 
     public Highlander() {
         super(HIT_POINTS, DAMAGE_POINTS, ARMOR_POINTS, BUCKLER_POINTS, AXE);
@@ -14,20 +16,29 @@ public class Highlander extends Fighter {
 
     public Highlander(String type) {
         super(HIT_POINTS, DAMAGE_POINTS, ARMOR_POINTS, BUCKLER_POINTS, AXE);
+        if ("Veteran".equals(type)) berserkTreshold = HIT_POINTS * 30 / 100;
     }
 
     int hitPoints(){
         return Math.max(hitPoints, 0);
     }
 
+    boolean isVeteran() { return berserkTreshold > 0; }
+
+    boolean isBeyondBerserkTreshold() { return hitPoints < berserkTreshold; }
+
+    void goBerserk() {
+        damagePoints *= 2;
+        berserk = true;
+    }
+
     @Override
     void fight(Fighter fighter, boolean oneTurnOutOfTwo) {
-        if(greatSword < 3) {
+        if(greatSwordTurns < 3) {
             super.fight(fighter, oneTurnOutOfTwo);
-            greatSword++;
-        } else {
-            greatSword = 1;
-        }
+            greatSwordTurns++;
+        } else greatSwordTurns = 1;
+
+        if ( isVeteran() ) if (isBeyondBerserkTreshold() && !berserk) goBerserk();
     }
 }
- 
