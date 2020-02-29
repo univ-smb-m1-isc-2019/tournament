@@ -2,17 +2,19 @@ package me.guillaume.tournament;
 
 public class Viking extends Fighter{
 
-    private final static int HIT_POINTS = 120;
-
+    private static final int HIT_POINTS = 120;
+    private static final String DEFAULT_WEAPON = "one_hand_axe";
 
     public Viking(){
         super(HIT_POINTS);
-        equip("one_hand_axe");
+        equip(DEFAULT_WEAPON);
     }
 
     public Viking(String skill){
         super(HIT_POINTS);
-        equip("one_hand_axe");
+        equip(DEFAULT_WEAPON);
+
+        this.skill = new SkillFactory().getSkill(skill);
     }
 
     public Viking equip(String equipmentName){

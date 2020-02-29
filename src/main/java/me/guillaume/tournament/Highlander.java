@@ -2,17 +2,19 @@ package me.guillaume.tournament;
 
 public class Highlander extends Fighter{
 
-    private final static int HIT_POINTS = 150;
-
+    private static final int HIT_POINTS = 150;
+    private static final String DEFAULT_WEAPON = "great_sword";
 
     public Highlander(){
         super(HIT_POINTS);
-        equip("great_sword");
+        equip(DEFAULT_WEAPON);
     }
 
     public Highlander(String skill){
         super(HIT_POINTS);
-        equip("great_sword");
+        equip(DEFAULT_WEAPON);
+
+        this.skill = new SkillFactory().getSkill(skill);
     }
 
     public Highlander equip(String equipmentName){

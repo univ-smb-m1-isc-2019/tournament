@@ -6,18 +6,19 @@ public abstract class Fighter {
 
     private int maxHitPoints;
     private int hitPoints;
-    private Skill skill;
-
     private int fatigue;
+
     protected Weapon weapon;
     protected ArrayList<Defense> defenseEquipment;
 
+    protected Skill skill;
 
     public Fighter(int maxHitPoints){
         this.maxHitPoints = maxHitPoints;
         this.hitPoints = maxHitPoints;
         this.fatigue = 0;
         this.defenseEquipment = new ArrayList<>();
+        this.skill = null;
     }
 
     public void engage(Fighter otherFighter){
