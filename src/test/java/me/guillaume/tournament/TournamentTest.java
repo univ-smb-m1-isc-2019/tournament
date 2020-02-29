@@ -52,6 +52,7 @@ public class TournamentTest {
         assertThat(swordsman.hitPoints()).isEqualTo(0);
         assertThat(viking.hitPoints()).isEqualTo(70);
 
+
     }
 
     /**
@@ -70,6 +71,9 @@ public class TournamentTest {
 
         swordsman.engage(highlander);
 
+        assertThat(swordsman.bucklerPoints).isEqualTo(3);
+        assertThat(swordsman.armorPoints).isEqualTo(3);
+        assertThat(swordsman.damagePoints).isEqualTo(4);
         assertThat(swordsman.hitPoints()).isEqualTo(0);
         assertThat(highlander.hitPoints()).isEqualTo(10);
 
