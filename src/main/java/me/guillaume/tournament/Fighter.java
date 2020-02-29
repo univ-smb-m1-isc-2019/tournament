@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Fighter {
 
+    private int maxHitPoints;
     private int hitPoints;
     private Skill skill;
 
@@ -12,8 +13,9 @@ public abstract class Fighter {
     protected ArrayList<Defense> defenseEquipment;
 
 
-    public Fighter(int hitPoints){
-        this.hitPoints = hitPoints;
+    public Fighter(int maxHitPoints){
+        this.maxHitPoints = maxHitPoints;
+        this.hitPoints = maxHitPoints;
         this.fatigue = 0;
         this.defenseEquipment = new ArrayList<>();
     }
@@ -81,6 +83,8 @@ public abstract class Fighter {
     public int hitPoints(){
         return hitPoints;
     }
+
+    public int maxHitPoints(){ return maxHitPoints; }
 
     public abstract Fighter equip(String equipment);
 }

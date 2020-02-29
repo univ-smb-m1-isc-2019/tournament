@@ -1,4 +1,6 @@
 package me.guillaume.tournament;
 
-public class Skill {
+public abstract class Skill {
+
+    public abstract int damageModifier(int attackPower, Fighter fighter);
 }
