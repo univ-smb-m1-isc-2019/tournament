@@ -31,8 +31,7 @@ public class TournamentTest {
 
         assertThat(swordsman.hitPoints()).isEqualTo(0);
         assertThat(viking.hitPoints()).isEqualTo(35);
-
-    }
+        }
 
     /**
      * a buckler cancel all the damages of a blow one time out of two
@@ -82,7 +81,7 @@ public class TournamentTest {
      * once Berserk, he doubles his damages
      */
     @Test
-    @Ignore // interesting but might be a bit long...
+   // @Ignore // interesting but might be a bit long...
     public void ViciousSwordsmanVsVeteranHighlander() {
 
         Swordsman swordsman = new Swordsman("Vicious")
