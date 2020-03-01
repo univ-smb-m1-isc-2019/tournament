@@ -27,7 +27,7 @@ public class Buckler extends Equipment {
         }
     }
 
-    public boolean isProtectionIsActive() {
+    public boolean protectionIsActive() {
         return protectionIsActive;
     }
 }

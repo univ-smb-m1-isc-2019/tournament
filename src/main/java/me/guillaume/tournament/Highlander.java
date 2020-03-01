@@ -11,7 +11,8 @@ public class Highlander extends Warrior{
     }
 
     public Highlander equip(String obj) {
-            this.equipment.add(createdEquipementItem(obj));
+            this.equipment.add(createdEquipmentItem(obj));
+            equipping();
         return this;
     }
 

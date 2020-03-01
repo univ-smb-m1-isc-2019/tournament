@@ -11,7 +11,7 @@ public class Viking extends Warrior{
     }
 
     public Viking equip(String obj) {
-            this.equipment.add(createdEquipementItem(obj));
+            this.equipment.add(createdEquipmentItem(obj));
             equipping();
         return this;
     }
