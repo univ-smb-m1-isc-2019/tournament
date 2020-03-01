@@ -9,8 +9,8 @@ public class Swordsman extends Combattant{
 
     }
 
-    public Swordsman(String vicious) {
-        super(150,vicious);
+    public Swordsman(String spec) {
+        super(150,spec,Swordsman.épée);
     }
 
     public void engage(Combattant Comb){
@@ -26,8 +26,8 @@ public class Swordsman extends Combattant{
         return (Swordsman) super.equip(buckler);
     }
 
-    public Swordsman unequip(String buckler) {
-        return (Swordsman) super.unequip(buckler);
+    public Swordsman retier_equipement(String buckler) {
+        return (Swordsman) super.retier_equipement(buckler);
     }
 
 }
