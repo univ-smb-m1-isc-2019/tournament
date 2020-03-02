@@ -6,6 +6,7 @@ public class Viking {
 
     private Weapon weapon;
     private int hitPoints;
+    private Buckler buckler;
 
     public Viking() {
         weapon = new Axe();
@@ -16,8 +17,11 @@ public class Viking {
         return hitPoints;
     }
 
-    public Viking equip(String buckler) {
-        return null;
+    public Viking equip(String equipment) {
+        if ("buckler".equals(equipment)) {
+            buckler = new Buckler();
+        }
+        return this;
     }
 
     public void hit(Swordsman swordsman) {
@@ -25,6 +29,10 @@ public class Viking {
     }
 
     public void hitBy(Weapon weapon) {
+        if (buckler != null && buckler.canBlock(weapon)) {
+            return;
+        }
+
         hitPoints = max(0, hitPoints - weapon.damage());
     }
 
