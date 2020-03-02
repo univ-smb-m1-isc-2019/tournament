@@ -2,10 +2,10 @@ package me.guillaume.tournament;
 
 public class Fight {
 
-    private final Swordsman swordsman;
-    private final Viking viking;
+    private final Fighter swordsman;
+    private final Fighter viking;
 
-    public Fight(Swordsman swordsman, Viking viking) {
+    public Fight(Fighter swordsman, Fighter viking) {
 
         this.swordsman = swordsman;
         this.viking = viking;

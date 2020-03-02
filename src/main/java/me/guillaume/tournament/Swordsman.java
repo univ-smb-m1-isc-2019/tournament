@@ -1,28 +1,17 @@
 package me.guillaume.tournament;
 
-import static java.lang.Math.max;
-
-public class Swordsman {
-
-    private int hitPoints;
-    private Weapon weapon;
-    private Buckler buckler;
+public class Swordsman extends Fighter {
 
     public Swordsman(String vicious) {
         this();
     }
 
     public Swordsman() {
-        hitPoints = 100;
-        weapon = new Sword();
+        super(new Sword(), 100);
     }
 
-    public void engage(Viking viking) {
-        new Fight(this, viking).run();
-    }
-
-    public int hitPoints() {
-        return hitPoints;
+    public void engage(Fighter fighter) {
+        new Fight(this, fighter).run();
     }
 
     public Swordsman equip(String equipment) {
@@ -36,20 +25,4 @@ public class Swordsman {
 
     }
 
-    public void hit(Viking viking) {
-        viking.hitBy(weapon);
-    }
-
-    public void hitBy(Weapon weapon) {
-
-        if (buckler != null && buckler.canBlock(weapon)) {
-            return;
-        }
-
-        hitPoints = max(0, hitPoints - weapon.damage());
-    }
-
-    public boolean isDead() {
-        return hitPoints <= 0;
-    }
 }

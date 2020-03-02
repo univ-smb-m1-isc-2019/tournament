@@ -1,20 +1,9 @@
 package me.guillaume.tournament;
 
-import static java.lang.Math.max;
-
-public class Viking {
-
-    private Weapon weapon;
-    private int hitPoints;
-    private Buckler buckler;
+public class Viking extends Fighter {
 
     public Viking() {
-        weapon = new Axe();
-        hitPoints = 120;
-    }
-
-    public int hitPoints() {
-        return hitPoints;
+        super(new Axe(), 120);
     }
 
     public Viking equip(String equipment) {
@@ -22,22 +11,6 @@ public class Viking {
             buckler = new Buckler();
         }
         return this;
-    }
-
-    public void hit(Swordsman swordsman) {
-        swordsman.hitBy(weapon);
-    }
-
-    public void hitBy(Weapon weapon) {
-        if (buckler != null && buckler.canBlock(weapon)) {
-            return;
-        }
-
-        hitPoints = max(0, hitPoints - weapon.damage());
-    }
-
-    public boolean isDead() {
-        return hitPoints <= 0;
     }
 
 }
