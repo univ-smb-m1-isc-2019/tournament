@@ -1,9 +1,16 @@
 package me.guillaume.tournament;
 
+import static java.lang.Math.max;
+
 public class Viking {
 
-    private Axe axe = new Axe(6);
-    private int hitPoints = 120;
+    private Weapon weapon;
+    private int hitPoints;
+
+    public Viking() {
+        weapon = new Axe();
+        hitPoints = 120;
+    }
 
     public int hitPoints() {
         return hitPoints;
@@ -14,11 +21,11 @@ public class Viking {
     }
 
     public void hit(Swordsman swordsman) {
-        swordsman.hitBy(axe);
+        swordsman.hitBy(weapon);
     }
 
-    public void hitBy(Sword sword) {
-        hitPoints = Math.max(0, hitPoints - sword.damage());
+    public void hitBy(Weapon weapon) {
+        hitPoints = max(0, hitPoints - weapon.damage());
     }
 
     public boolean isDead() {
