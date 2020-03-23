@@ -12,8 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * Blow exchange are sequential, A engage B means that A will give the first blow, then B will respond
  *
- * there's no such thing as negative hit points, when you reach 0, you are dead, combat stops.
- *
  */
 public class TournamentTest {
 
@@ -33,11 +31,10 @@ public class TournamentTest {
 
         assertThat(swordsman.hitPoints()).isEqualTo(0);
         assertThat(viking.hitPoints()).isEqualTo(35);
-
-    }
+        }
 
     /**
-     * a buckler cancel all the damages of a blow, one time out of two
+     * a buckler cancel all the damages of a blow one time out of two
      * a buckler is destroyed after blocking 3 blow from an axe
      */
     @Test
@@ -58,11 +55,11 @@ public class TournamentTest {
 
     /**
      * an Highlander as 150 hit points and fight with a Great Sword
-     * a Great Sword is a two handed sword that deliver 12 damages, but can attack only 2 every 3 (attack, attack, rest)
-     * an armor reduces all received damages by 3 & reduces delivered damages by one
+     * a Great Sword is a two handed sword deliver 12 damages, but can attack only 2 every 3
+     * an armor : reduce all received damages by 3 & reduce delivered damages by one
      */
     @Test
-    public void ArmoredSwordsmanVsHighlander() {
+    public void ArmoredSwordsmanVsViking() {
 
         Highlander highlander = new Highlander();
 
@@ -81,15 +78,15 @@ public class TournamentTest {
      * a vicious Swordsman is a Swordsman that put poison on his weapon.
      * poison add 20 damages on two first blows
      * a veteran Highlander goes Berserk once his hit points are under 30% of his initial total
-     * once Berserk, he doubles his damages.
+     * once Berserk, he doubles his damages
      */
     @Test
-    @Ignore // bonus points when all the rest is neat and tidy
+   // @Ignore // interesting but might be a bit long...
     public void ViciousSwordsmanVsVeteranHighlander() {
 
         Swordsman swordsman = new Swordsman("Vicious")
                 .equip("axe")
-                .equip("buckler") // obviously equipping an axe and a buckler remove the sword (standard human have usually only 2 arms)
+                .equip("buckler")
                 .equip("armor");
 
         Highlander highlander = new Highlander("Veteran");
